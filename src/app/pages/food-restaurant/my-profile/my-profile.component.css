@@ -1,0 +1,189 @@
+/************** upload image css **************/
+
+.file-upload {
+    position: relative;
+    margin-bottom: 20px;
+    height: 200px;
+    width: 200px;
+}
+
+.file-upload img {
+    height: 35px;
+    width: 35px;
+}
+
+.cameradiv {
+    position: absolute;
+    left: 172px;
+    bottom: -15px;
+}
+
+.img img {
+    border-radius: 4px;
+    height: 200px;
+    width: 200px;
+}
+
+
+.file-upload input {
+    opacity: 0;
+    position: absolute;
+    z-index: 999999;
+    top: 0px;
+    left: 1px;
+    height: 40px;
+    width: 46px;
+}
+
+
+.is-primary {
+    padding: 0;
+    border: none;
+    background: transparent;
+    position: relative;
+}
+
+.file-upload img {
+    height: 35px;
+    width: 35px;
+}
+
+.cameradiv {
+    position: absolute;
+    left: 146px;
+    bottom: 5px;
+    opacity: 1!important;
+}
+
+.img img {
+    border-radius: 50%;
+    height: 200px;
+    width: 200px;
+    border: 2px solid #33BD8C;
+    object-fit: cover;
+}
+
+/************** upload image css **************/
+
+
+
+/* input upload form */
+
+.custom-img-input .upload_image {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    width: 10%0;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.custom-img-input .upload_image img{
+    margin-left: 14px;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+
+}
+
+.custom-img-input label img {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+  }
+ 
+.custom-img-input .hoverable {
+    position: relative;
+    display: block;
+    cursor: pointer;
+    height: 40px;
+    width: 100%;
+    /* border-radius: 50%; */
+    /* background: red; */
+    border-radius: 10px;
+    display: flex;
+    justify-content: end;
+}
+ 
+.custom-img-input .hoverable .hover-text {
+    position: absolute;
+    display: block;
+    top: 50%;
+    right: 5%;
+    transform: translate(-0%,-50%);
+    z-index: 2;
+}
+.custom-img-input .hoverable .background{
+    position: absolute;
+    display: none;
+    top: 0;
+    left:  0;
+    bottom: 0;
+    right: 0;
+    background-color:rgba(255, 255, 255, 0.5);
+    pointer-events: none;
+    border-radius: 50%;
+    z-index: 1;
+  }
+
+.custom-img-input  .hoverable:hover .hover-text{
+    display: block;
+  }
+
+
+.custom-img-input .hoverable:hover .background{
+    display: block;
+  }
+  
+.custom-img-input #fileInput{
+    display: none;
+  }
+
+
+  .custom-img-input #fileInput1{
+    display: none;
+  }
+
+.custom-img-input .hover-text img{
+    width: 20px;
+    height: 20px;
+    border-radius: 0px!important;
+  }
+
+
+  .custom-img-input{
+    background: #FFFFFF2B 0% 0% no-repeat padding-box;
+    border: 1px solid #c2c2c2;
+    border-radius: 10px;
+    opacity: 1;
+    height: 60px;
+    /* width: 100%; */
+    position: relative;
+  }
+/* input upload form */
+
+
+.form-head{
+    font-size: 24px;
+    font-weight : bold;
+    letter-spacing: 0px;
+    color: #242424;
+    margin-bottom: 16px;
+}
+
+
+.preview{
+    font-weight:600;
+    cursor: pointer;
+}
+
+
+.location-map{
+    width: 100%;
+    height: 300px;
+    border-radius: 12px;
+}
+
+

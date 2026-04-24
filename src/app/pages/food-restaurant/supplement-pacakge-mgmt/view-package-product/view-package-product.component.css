@@ -1,0 +1,30 @@
+
+label{
+    font-size:18px;
+    font-weight: bold;
+    letter-spacing: 0.6px;
+    color: #000000;
+    margin-bottom: 0px;
+}
+
+
+
+
+table tr th{
+    width: 30%;
+    padding:10px 0px ;
+    vertical-align: middle;
+    
+}
+
+table tr td{
+    width: 70%;
+    padding:10px 0px ;
+
+}
+
+
+table tr td:nth-child(2){
+    text-align: right;
+}
+

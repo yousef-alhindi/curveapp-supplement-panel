@@ -1,0 +1,193 @@
+<div class="row">
+  <div class=" col-xl-12 col-xxl-10">
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <h4 class="card-title">
+            <i class="bi bi-arrow-left-short" routerLink="/supplement/supplement-mgmt"></i>
+            <span> {{patchValueData ? 'Edit':'Add'}} Supplement </span>
+          </h4>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-form">
+          <form [formGroup]="addSupplementForm">
+          <div class="row">
+
+            <div class="col-12 mb-2">
+              <div class="custom-form-input mb-2">
+                <label class="label-form">Select Type</label>
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-select placeholder="Select type" formControlName="type">
+                    <mat-option value='Weight Gain'>Weight Gain</mat-option>
+                    <mat-option value='Weight Loss'>Weight Loss</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-error class="text-danger" *ngIf="submitted && f['type'].errors">
+                  <span *ngIf="submitted && f['type'].errors['required']">*Please
+                      Select Type
+
+                  </span>
+
+
+              </mat-error>
+              </div>
+            </div>
+
+            <div formArrayName="fieldsArray">
+              <div class="row gx-2 row-cols-5 align-items-center" *ngFor="let field of fieldsArray.controls; let i = index" [formGroupName]="i">
+                <div class="custom-form-input col mb-2">
+                  <label class="label-form">Size</label>
+                  <mat-form-field appearance="outline" class="w-100">
+                    <input matInput placeholder="Enter Size" formControlName="size" onkeypress="return event.charCode > 47 && event.charCode < 58;" />
+                  </mat-form-field>
+                  <mat-error *ngIf="submitted && field.get('size')?.errors">
+                    *Size is required.
+                  </mat-error>
+                </div>
+          
+                <div class="custom-form-input col mb-2">
+                  <label class="label-form">Quantity</label>
+                  <mat-form-field appearance="outline" class="w-100">
+                    <input matInput placeholder="Enter Quantity" formControlName="quantity" onkeypress="return event.charCode > 47 && event.charCode < 58;" />
+                  </mat-form-field>
+                  <mat-error *ngIf="submitted && field.get('quantity')?.errors">
+                    *Quantity is required.
+                  </mat-error>
+                </div>
+          
+                <div class="custom-form-input col mb-2">
+                  <label class="label-form">MRP</label>
+                  <mat-form-field appearance="outline" class="w-100">
+                    <input matInput placeholder="Enter MRP" formControlName="mrp" onkeypress="return event.charCode > 47 && event.charCode < 58;" />
+                  </mat-form-field>
+                  <mat-error *ngIf="submitted && field.get('mrp')?.errors">
+                    *MRP is required.
+                  </mat-error>
+                </div>
+          
+                <div class="custom-form-input col mb-2">
+                  <label class="label-form">Selling Price</label>
+                  <mat-form-field appearance="outline" class="w-100">
+                    <input matInput placeholder="Enter Selling Price" formControlName="sellingPrice" onkeypress="return event.charCode > 47 && event.charCode < 58;" />
+                  </mat-form-field>
+                  <mat-error *ngIf="submitted && field.get('sellingPrice')?.errors">
+                    *Selling Price is required.
+                  </mat-error>
+                </div>
+          
+                <div class="col text-end cursor-pointer">
+                  <i class="bi" [ngClass]="i === 0 ? 'bi-plus-circle-fill' : 'bi-dash-circle-fill'" (click)="i === 0 ? addField() : removeField(i)"></i>
+                </div>
+              </div>  
+            </div>
+          
+
+
+            <div class="col-lg-12 mb-2">
+              <div class="custom-form-input mb-2">
+                <label class="label-form">Supplement Name</label>
+                <mat-form-field appearance="outline" class="w-100">
+                  <input matInput placeholder="Type Here" formControlName="name" onkeypress="return event.target.selectionStart === 0 ? event.key !== ' ' : true;"/>
+                </mat-form-field>
+                <mat-error class="text-danger" *ngIf="submitted && f['name'].errors">
+                  <span *ngIf="submitted && f['name'].errors['required']">*Please
+                      Enter Supplement Name
+
+                  </span>
+
+
+              </mat-error>
+              </div>
+            </div>
+
+            <div class="col-lg-12 mb-2">
+              <div class="custom-form-input mb-2">
+                <label class="label-form">Brand Name</label>
+                <mat-form-field appearance="outline" class="w-100">
+                  <input matInput placeholder="Type Here" formControlName="brandName" onkeypress="return event.target.selectionStart === 0 ? event.key !== ' ' : true;"/>
+                </mat-form-field>
+                <mat-error class="text-danger" *ngIf="submitted && f['brandName'].errors">
+                  <span *ngIf="submitted && f['brandName'].errors['required']">*Please
+                      Enter Brand Name
+
+                  </span>
+
+
+              </mat-error>
+              </div>
+            </div>
+
+            <div class="col-lg-12 mb-2">
+              <div class="custom-form-input custom-textarea mb-2">
+                <label class="label-form">Description</label>
+                <mat-form-field appearance="outline" class="w-100">
+                  <textarea matInput rows="6" formControlName="description" onkeypress="return event.target.selectionStart === 0 ? event.key !== ' ' : true;"></textarea>
+                </mat-form-field>
+                <mat-error class="text-danger" *ngIf="submitted && f['description'].errors">
+                  <span *ngIf="submitted && f['description'].errors['required']">*Please
+                      Enter Description
+
+                  </span>
+
+
+              </mat-error>
+              </div>
+            </div>
+
+            <div class="col-lg-12 mb-2">
+              <div class="custom-form-input custom-textarea mb-2">
+                <label class="label-form">Upload Supplement Images</label>
+              </div>
+             
+               
+
+                <div class="row row-cols-1 row-cols-xl-5">
+                  <div class="col" *ngFor="let url of imageurls4; let i = index">
+                    <div class="upload-container">
+                      <input 
+                        *ngIf="!url" 
+                        type="file" 
+                        class="upload-input" 
+                        (change)="uploadFile($event, 'upload')" 
+                        accept="image/*"
+                      />
+                
+                      <div *ngIf="url" class="image-preview">
+                        <img [src]="url" alt="Uploaded Image" class="image-preview-img" />
+                        <button class="del-btn" >
+                          <i class="bi bi-x-lg" (click)="removeImage4(i)"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                
+                  <div class="col" *ngIf="imageurls4.length < 5">
+                    <div class="upload-container">
+                      <input type="file"  class="upload-input" formControlName="images"
+                      (change)="uploadFile($event,'upload')" multiple accept="image/*" />
+                      <p class="text-primary">Upload</p>
+                    </div>
+                  </div>
+                
+                
+
+             
+              
+
+
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <button class="w-100" color="primary" mat-flat-button (click)="addSupplement()">
+                {{patchValueData ? 'Update':'Save'}}
+              </button>
+            </div>
+          </div>
+        </form>   
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

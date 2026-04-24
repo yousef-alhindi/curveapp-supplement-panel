@@ -1,0 +1,137 @@
+/*------------------ profile upload------------------------------  */
+.upload_image {
+    display: flex;
+    justify-content: center;
+}
+
+.hoverable {
+    width: 230px;
+}
+
+
+label img {
+    height: 100%;
+    width: 100%;
+    /* border-radius:0; */
+}
+
+.hoverable {
+    position: relative;
+    display: block;
+    cursor: pointer;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+}
+
+.hoverable .hover-text {
+    position: absolute;
+    display: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 100%;
+    width: 140px;
+
+}
+
+.hoverable .background {
+    position: absolute;
+    display: none;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.5);
+    pointer-events: none;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.hoverable:hover .hover-text {
+    display: block;
+}
+
+.hoverable:hover .background {
+    display: block;
+}
+
+#fileInput1,
+#fileInput2 {
+    display: none;
+}
+
+.hover-text-upload {
+    position: relative;
+    top: -70px;
+    text-align: center;
+}
+
+.hoverable1 {
+    position: relative;
+    display: block;
+    cursor: auto;
+    height: 150px;
+    width: 100%;
+    /* background: aqua; */
+    background: #FFFFFF2B 0% 0% no-repeat padding-box;
+    border: 1px dashed #FFFFFF;
+    border-radius: 10px;
+    opacity: 1;
+
+}
+
+.hoverable1 img {
+    width: 100%;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.text-highlight p {
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+.text-highlight img {
+    width: 45px;
+    height: 50px;
+    margin-bottom: 20px;
+    border-radius: 0px;
+}
+
+/*--------------------- profile upload ----------------------------*/
+.upload-icon{
+    cursor: pointer!important;
+}
+
+
+.work{
+    font-weight: 600;
+    font-size:20px;
+    color: #FFFFFF;
+    opacity: 1;
+}
+
+
+.custom-btn-toggle .mat-button-toggle-checked {
+    /* background-color: #e0e0e0;
+    color: rgba(0,0,0,.54); */
+    color: #fff;
+    background: #33BD8C 0% 0% no-repeat padding-box;
+    border-radius: 5px;
+    border: none !important;
+    opacity: 1;
+  
+  }
+
+  .green-checkbox {
+    background-color: green !important;
+  }
+
+  .hoverable1{
+    height: 150px;
+  }
+
+

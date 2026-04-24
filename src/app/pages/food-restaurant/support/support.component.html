@@ -1,0 +1,39 @@
+<div class="fix">
+    <div class="btnfixed">
+        <button (click)="addTicket('500ms', '500ms')" color="primary" mat-flat-button class="w-280">
+            <img src="assets/images/add_ticket.png" class="me-1" alt="add_ticket" />
+            ADD TICKET
+        </button>
+    </div>
+</div>
+
+<section class="ticket">
+    <div *ngIf="queryList.length == 0" class="row text-center">
+        <h5>No Data Available</h5>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 d-flex align-items-stretch" *ngFor="let item of queryList">
+            <div class="ticket-wrapper d-flex gap-3">
+                <div class="ticket-icon">
+                    <img src="assets/images/ticket.png" alt="ticket" />
+                </div>
+
+                <div class="ticket-txt">
+                    <h6>{{ item.query }}</h6>
+                    <p>Submission Date - {{ item.createdAt | date }}</p>
+                    <p>Ticket ID - {{ item.ticketId }}</p>
+                </div>
+
+                <div class="status-btn" [class]="item.supportStatus == 1 ? 'warning' : 'success'">
+                    <span>{{ item.supportStatus == 2 ? "Resolved" : "Pending" }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- <div class="position-relative">
+    <div class="fixed-top">
+        <button color="primary" mat-flat-button class="w-260"> <img src="assets/images/add_ticket.png" class="me-1" alt="add_ticket"> ADD TICKET</button>
+    </div>
+</div> -->

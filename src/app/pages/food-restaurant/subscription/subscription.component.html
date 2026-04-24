@@ -1,0 +1,111 @@
+<div class="custom-tabs">
+  <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+    <mat-tab label="Subscription Plan">
+
+      <div class="row mt-4">
+        <div class="col-lg-6 mb-4 d-md-flex align-items-stretch" *ngFor="let item of plans">
+          <div class="subscription-card">
+            <div class="card h-100">
+              <div class="card-body">
+
+                <div class="card-head d-md-flex justify-content-between">
+                  <h5 class="card-title">{{item.name}}</h5>
+                  <h5 class="card-title primary-color">{{item.price}} KWD</h5>
+                </div>
+
+
+
+                <div class="benfit-wrapper">
+                  <h6 class="card-subtitle">Benefits</h6>
+                  <div class="benfit-list">
+                    <ul>
+                      <li>{{item.description}}</li>
+                      <li>{{item.duration}} Month</li>
+                    </ul>
+
+                  </div>
+                </div>
+
+
+                <div class="condition-wrapper">
+                  <h6 class="card-subtitle tc">T&C</h6>
+                  <div class="condition-text">
+                    <p>{{item.termAndCond}} </p>
+
+                  </div>
+                </div>
+
+
+
+
+              </div>
+              <div class="card-footer" (click)="buyDialog('500ms', '500ms' )">
+                <span>Buy</span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+    </mat-tab>
+    <mat-tab label="My Subscription Plan">
+
+      <div class="row mt-4">
+        <div class="col-lg-6 mb-4 d-md-flex align-items-stretch" *ngFor="let element of Myplans">
+          <div class="subscription-card">
+            <div class="card h-100">
+              <div class="card-body">
+
+                <div class="card-head d-md-flex justify-content-between">
+                  <h5 class="card-title">{{element.name}}</h5>
+                  <h5 class="card-title primary-color">{{element.price}} KWD</h5>
+                </div>
+
+
+
+                <div class="benfit-wrapper">
+                  <h6 class="card-subtitle">Benefits</h6>
+                  <div class="benfit-list">
+                    <ul>
+                      <li>{{element.description}}</li>
+                      <li>{{element.duration}} Month</li>
+                    </ul>
+
+                  </div>
+                </div>
+
+
+                <div class="condition-wrapper">
+                  <h6 class="card-subtitle tc">T&C</h6>
+                  <div class="condition-text">
+                    <p>{{element.termAndCond}}</p>
+
+                  </div>
+                </div>
+
+
+
+
+              </div>
+              <div class="card-footer active" [class]="element.subscriptionExpired? 'success':'danger'">
+
+                <span>{{element.subscriptionExpired?'Buy':'Expired'}}</span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+      </div>
+
+    </mat-tab>
+  </mat-tab-group>
+</div>

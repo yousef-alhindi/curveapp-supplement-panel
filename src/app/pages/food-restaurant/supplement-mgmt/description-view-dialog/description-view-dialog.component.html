@@ -1,0 +1,62 @@
+<div class="dialog-wrapper" *ngIf="!data.type && data.type != 10">
+    <div mat-dialog-title>
+        <span class="dialog-heading">Description</span>
+        <i mat-dialog-close class="bi bi-x-circle-fill primary-color"></i>
+    </div>
+    <mat-dialog-content class="mat-typography">
+        <div class="view">
+            <p>{{data.element.description ? data.element.description : data.element}}</p>
+        </div>
+    </mat-dialog-content>
+</div>
+<div class="dialog-wrapper" *ngIf="data.type == 10">
+    <div class="dialog-wrapper">
+        <div mat-dialog-title>
+          <span class="dialog-heading">View Details</span>
+          <i mat-dialog-close class="bi bi-x-circle-fill primary-color"></i>
+        </div>
+        <mat-dialog-content class="mat-typography">
+          <div class="row">
+            <div class="col-12">
+              <div
+                class="table-responsive"
+              >
+                <table class="table star-table table-borderless mb-0">
+                  <tbody>
+                    <h3 *ngIf="itemDetails.bundles[0]._id"> Bundle Details</h3>
+                    <tr *ngFor="let i of itemDetails.bundles">
+                      <th>
+                        <label>{{ i?.bundleId?.name }}</label>
+                      </th>
+      
+                      <td>
+                        <div class="like-dislike d-flex gap-2 justify-content-end">
+                         {{i?.bundleId?.type}}
+                        </div>
+                      </td>
+                    </tr>
+                 
+                    <h3 *ngIf="itemDetails.items[0]._id"> Item Details</h3>
+                    <tr *ngFor="let i of itemDetails.items">
+                      <th>
+                        <label>{{ i?.itemId?.name }}</label>
+                      </th>
+      
+                      <td>
+                        <div class="like-dislike d-flex gap-2 justify-content-end">
+                            {{ i?.itemId?.type }}
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+      
+          
+            </div>
+          </div>
+        </mat-dialog-content>
+
+      </div>
+      
+</div>

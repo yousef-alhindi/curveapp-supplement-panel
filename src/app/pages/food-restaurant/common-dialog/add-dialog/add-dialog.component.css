@@ -1,0 +1,228 @@
+.btn-info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #E5F9F2 0% 0% no-repeat padding-box;
+    border-radius: 92px;
+    border: none;
+
+    font-size:14px;
+    font-weight: 500;
+    letter-spacing: 0px;
+    color: #33BD8C;
+    text-transform: capitalize;
+    padding: 0px;
+}
+
+
+
+
+.add-wrapper .btn-check:checked+.btn, 
+.add-wrapper .btn.active, 
+.add-wrapper .btn.show,
+.add-wrapper .btn:first-child:active, 
+.add-wrapper:not(.btn-check)+.btn:active {
+    color: #ffffff!important;
+    background-color: var(--primary-color)!important;
+    border-color: none!important;
+}
+
+
+
+.text-muted{
+    font-weight: 500;
+    font-size:14px;
+    letter-spacing: 0px;
+    color: #BBBBBB;
+    margin-bottom: 15px;
+}
+
+
+
+
+
+
+
+
+
+
+/*------------------ profile upload------------------------------  */
+.upload_image {
+    display: flex;
+    justify-content: center;
+}
+
+.hoverable {
+    width: 230px;
+}
+
+
+label img {
+    height: 100%;
+    width: 100%;
+    /* border-radius:0; */
+}
+
+.hoverable {
+    position: relative;
+    display: block;
+    cursor: pointer;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+}
+
+.hoverable .hover-text {
+    position: absolute;
+    display: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 100%;
+
+}
+
+.hoverable .background {
+    position: absolute;
+    display: none;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.5);
+    pointer-events: none;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.hoverable:hover .hover-text {
+    display: block;
+}
+
+.hoverable:hover .background {
+    display: block;
+}
+
+#fileInput {
+    display: none;
+}
+
+.hover-text-upload {
+    position: relative;
+    top: -70px;
+    text-align: center;
+}
+
+.hoverable1 {
+    position: relative;
+    display: block;
+    cursor: pointer;
+    height: 300px;
+    width: 100%;
+    background: #CBEEE2 0% 0% no-repeat padding-box;   
+    /* border: 1px dashed #FFFFFF; */
+    border-radius: 12px;
+    opacity: 1;
+
+}
+
+.hoverable1 img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.text-highlight p {
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+    color: #242424;
+}
+
+.text-highlight img {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 8px;
+    border-radius: 0px;
+}
+
+/*--------------------- profile upload ----------------------------*/
+
+
+.form-control{
+    bottom: 0px!important;
+    left: 0px!important;
+    border-color: #C2C2C2;
+  }
+
+.form-control:focus{
+    box-shadow: none;
+    border-color: var(--primary-color);
+}
+
+
+.form-control::placeholder{
+    font-size: 13px;
+color: #7A7A7A;
+opacity: 0.4;
+font-weight: 500;
+}
+
+
+  .input-group-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    color: #7A7A7A;
+    white-space: nowrap;
+    background: #F0F0F0 0% 0% no-repeat padding-box;
+    border-radius: 24px 0px 0px 24px;
+    width: 90px;
+    text-align: center;
+    padding: 12px;
+    border: 1px solid #C2C2C2;
+}
+
+
+.input-group>:not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+   
+
+    border-radius: 0px 40px 40px 0px!important;
+
+}
+
+
+.label-spn{
+
+    text-align: left;
+    font-weight:500;
+    font-size: 18px;
+    color: #242424;
+}
+
+
+
+.success-title{
+    font-weight:bold; 
+    font-size: 22px;
+    letter-spacing: 0px;
+    color: #242424;
+    /* font-family: "Montserrat", sans-serif; */
+}
+
+.success-text{
+    font-weight: 500;
+    font-size: 15px;
+    letter-spacing: 0px;
+    color: #333333;
+    opacity: 1;
+    margin-bottom:0px;
+
+}
+
+.success img{
+    width: 100px;
+    height: 100px;
+}

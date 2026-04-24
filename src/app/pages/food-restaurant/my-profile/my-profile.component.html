@@ -1,0 +1,402 @@
+<form [formGroup]="editProfileForm">
+  <div class="page-wrapper">
+    <div class="row">
+      <div class="col-12 mb-3">
+        <div class="form-group">
+          <div class="file-upload">
+            <label class="cameradiv">
+              <img src="assets/images/edit_profile.png" />
+              <input
+                type="file"
+                name="somename"
+                (change)="onSelectFile3($event)"
+                formControlName="supLogo"
+              />
+            </label>
+            <div class="img">
+              <!-- Show placeholder if no image selected -->
+              <img *ngIf="!supLogo" src="assets/images/placeholder.jpg" />
+              <!-- Show the selected image preview -->
+              <img *ngIf="supLogo" [src]="supLogo" />
+            </div>
+          </div>
+          
+        </div>
+      </div>
+
+      <div class="col-lg-4 mb-3">
+        <h3 class="form-head">Business Theme Color</h3>
+
+        <label class="form-label"
+          >Choose theme color to interact your users with services</label
+        >
+
+        <div class="picker">
+          <div>
+            <input
+              class="form-control"
+              [cpPosition]="'bottom'"
+              [value]="color"
+              [cpAlphaChannel]="'always'"
+              [cpOutputFormat]="'hex'"
+              [cpEyeDropper]="true"
+              [cpWidth]="'300px'"
+              [(colorPicker)]="color"
+              [style.background]="
+                resturantDetails?.colorCode
+                  ? resturantDetails.colorCode
+                  : '#ff0000'
+              "
+            />
+          </div>
+
+          <div>
+            <p
+              class="primary-color preview mb-0"
+              (click)="previewDialog('500ms', '500ms')"
+            >
+              Preview
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-3">
+      <h3 class="form-head">Business Details</h3>
+
+      <div class="row mt-3">
+        <div class="col-md-6 col-lg-4">
+          <div class="custom-form-input mb-4">
+            <label class="form-label">Owner Name</label>
+            <mat-form-field appearance="outline" class="w-100">
+              <input
+                matInput
+                placeholder="Enter Owner Name"
+                formControlName="ownerName"
+              />
+            </mat-form-field>
+            <div
+              *ngIf="commonFunctionForError('ownerName')"
+              class="text-danger"
+            >
+              ownerName is required
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="custom-form-input mb-4">
+            <label class="form-label">Shop Name</label>
+            <mat-form-field appearance="outline" class="w-100">
+              <input
+                matInput
+                placeholder="Enter Restaurant Name"
+                formControlName="name"
+              />
+            </mat-form-field>
+            <div *ngIf="commonFunctionForError('name')" class="text-danger">
+              Shop Name is required
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 col-lg-4">
+          <div class="custom-form-input mb-4">
+            <label class="form-label">Mobile Number(verified)</label>
+            <mat-form-field appearance="outline" class="w-100">
+              <input
+                matInput
+                placeholder="Enter Owner Name"
+                formControlName="mobileNumber"
+              />
+            </mat-form-field>
+            <div
+              *ngIf="commonFunctionForError('mobileNumber')"
+              class="text-danger"
+            >
+              mobileNumber is required
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="custom-form-input mb-4">
+            <label class="form-label">Email Id(verified)</label>
+            <mat-form-field appearance="outline" class="w-100">
+              <input
+                matInput
+                placeholder="Enter Email Id(verified)"
+                formControlName="email"
+              />
+            </mat-form-field>
+            <div *ngIf="commonFunctionForError('email')" class="text-danger">
+              email is required
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+ 
+
+    <div class="mt-3">
+      <h3 class="form-head">View Documents</h3>
+
+      <div class="row mt-3">
+        <div class="col-md-6 col-lg-4">
+          <div class="custom-img-input mb-4">
+            <div class="upload_image">
+              <img
+                [src]="
+                  url ? url : 'https://www.w3schools.com/howto/img_avatar.png'
+                "
+              />
+              <label class="hoverable" for="fileInput">
+                <div class="hover-text">
+                  <img src="assets/images/upload_small.png" alt="upload" />
+                </div>
+              </label>
+              <br />
+              <input
+                id="fileInput"
+                type="file"
+                (change)="onSelectFile($event)"
+                formControlName="license"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="custom-img-input mb-4">
+            <div class="upload_image">
+              <img
+                [src]="
+                  url1 ? url1 : 'https://www.w3schools.com/howto/img_avatar.png'
+                "
+              />
+              <label class="hoverable" for="fileInput1">
+                <div class="hover-text">
+                  <img src="assets/images/upload_small.png" alt="upload" />
+                </div>
+              </label>
+              <br />
+              <input
+                id="fileInput1"
+                type="file"
+                (change)="onSelectFile1($event)"
+                formControlName="idProof"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-3">
+      <h3 class="form-head">Bank Details</h3>
+
+      <div class="row mt-3">
+        <div class="col-md-6 col-lg-4">
+          <div class="custom-form-input mb-4">
+            <label class="form-label">Account Number</label>
+            <mat-form-field appearance="outline" class="w-100">
+              <input
+                matInput
+                placeholder="Enter Account Number"
+                formControlName="bankAccountNo"
+              />
+            </mat-form-field>
+            <div
+              *ngIf="commonFunctionForError('bankAccountNo')"
+              class="text-danger"
+            >
+              bankAccountNo is required
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="custom-form-input mb-4">
+            <label class="form-label">Bank Name</label>
+            <mat-form-field appearance="outline" class="w-100">
+              <input
+                matInput
+                placeholder="Enter Bank Name"
+                formControlName="bankName"
+              />
+            </mat-form-field>
+            <div *ngIf="commonFunctionForError('bankName')" class="text-danger">
+              bankName is required
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 col-lg-4">
+          <div class="custom-form-input mb-4">
+            <label class="form-label">Account Holder Name</label>
+            <mat-form-field appearance="outline" class="w-100">
+              <input
+                matInput
+                placeholder="Enter Account Holder Name"
+                formControlName="accHolderName"
+              />
+            </mat-form-field>
+            <div
+              *ngIf="commonFunctionForError('accHolderName')"
+              class="text-danger"
+            >
+              accHolderName is required
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="custom-form-input mb-4">
+            <label class="form-label">Bank Code</label>
+            <mat-form-field appearance="outline" class="w-100">
+              <input
+                matInput
+                placeholder="Enter Bank Code"
+                formControlName="bankCode"
+              />
+            </mat-form-field>
+            <div *ngIf="commonFunctionForError('bankCode')" class="text-danger">
+              bankCode is required
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-3">
+      <!-- <h3 class="form-head">Working Days</h3>
+
+      <div class="row mt-3">
+        <div class="col-md-6 col-lg-6">
+          <div class="custom-btn-toggle custom-form-btn-toggle mt-3 mb-4">
+            <mat-button-toggle-group
+              name="ingredients"
+              aria-label="Ingredients"
+              multiple
+              (change)="getWokingDay($event)"
+            >
+              <mat-button-toggle
+                ngDefaultControl
+                [value]="item.value"
+                *ngFor="let item of workingDays"
+                formControlName="workingDays"
+                [checked]="item?.checked"
+                >{{ item?.showName }}</mat-button-toggle
+              >
+            </mat-button-toggle-group>
+            <div
+              *ngIf="commonFunctionForError('workingDays')"
+              class="text-danger"
+            >
+              workingDays is required
+            </div>
+          </div>
+        </div>
+
+      <div class="col-md-2 col-lg-2 text-end">
+        <div class="checkbox primary-check mt-2 mb-4">
+          <mat-checkbox class="example-margin primary-color"
+            >Select All</mat-checkbox
+          >
+        </div>
+      </div> -->
+      <!-- </div> -->
+
+      <!-- <div class="row">
+        <div class="col-md-6 col-lg-4">
+          <div class="custom-form-search">
+            <label class="form-label">Opening Time</label>
+            <input
+              class="search form-control"
+              [ngxTimepicker]="picker"
+              type="text"
+              placeholder="Choose Opening Time"
+              formControlName="openingTime"
+            />
+            <ngx-material-timepicker
+              #picker
+              (timeSet)="handleTimeSet($event)"
+            ></ngx-material-timepicker>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="custom-form-search">
+            <label class="form-label">Closing Time</label>
+            <input
+              class="search form-control"
+              [ngxTimepicker]="picker1"
+              type="text"
+              placeholder="Choose Closing Time"
+              formControlName="closingTime"
+            />
+
+            <ngx-material-timepicker
+              #picker1
+              (timeSet)="handleTimeSet1($event)"
+            ></ngx-material-timepicker>
+          </div>
+        </div>
+      </div> --> 
+
+
+      <div class="mt-5">
+        <h3 class="form-head">Address Details</h3>
+  
+        <div class="row mt-3">
+          <div class="col-md-12 col-lg-8">
+            <div class="custom-form-input mb-4">
+              <!-- <label class="form-label">Address</label> -->
+              <mat-form-field appearance="outline" class="w-100" 
+              (click)="locationDialog()">
+                <input matInput readonly placeholder="Address" formControlName="address" />
+                <mat-icon matSuffix class="primary-color pointer"
+                  >near_me</mat-icon
+                >
+              </mat-form-field>
+            </div>
+          </div>
+  
+          <div class="col-md-12 col-lg-8">
+           
+          <!-- <div class="location-map" >
+            <agm-map  style="width: 100%; height: 100%;border-radius: 12px;" [zoom]="2" [latitude]="lat" [longitude]="lng">
+                <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+              </agm-map>
+          </div> -->
+          
+
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="row mt-5">
+        <div class="col-md-6 col-lg-4">
+          <div class="auth-btn-form">
+            <button
+              mat-flat-button
+              class="w-100"
+              color="primary"
+              (click)="updateProfileDetails()"
+            >
+              Save
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

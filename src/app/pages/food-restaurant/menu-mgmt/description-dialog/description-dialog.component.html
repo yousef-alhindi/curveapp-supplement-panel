@@ -1,0 +1,81 @@
+<div class="dialog-wrapper">
+    <div mat-dialog-title>
+        <span class="dialog-heading">Nutrition Details</span>
+        <i mat-dialog-close class="bi bi-x-circle-fill primary-color"></i>
+    </div>
+    <mat-dialog-content class="mat-typography">
+
+        <div class="row">
+            <div class="col-12">
+             
+                <div class="table-responsive ">
+                    <table class="table  table-borderless mb-0" >
+  
+                      <tbody>
+                        <tr>
+                          <td>
+                            <label>Calories</label>
+                          </td>
+  
+                          <td>
+                            <label>{{data?.element?.nutrition?.calories}} g</label>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td>
+                            <label>Carbs</label>
+                          </td>
+  
+                          <td>
+                            <label>{{data?.element?.nutrition?.carbs}} g</label>
+                          </td>
+                        </tr>
+  
+                        <tr>
+                          <td>
+                            <label>Protein</label>
+                          </td>
+  
+                          <td>
+                            <label>{{data?.element?.nutrition?.protein}} g</label>
+                          </td>
+  
+                        </tr>
+  
+  
+                        <tr>
+                          <td>
+                            <label>Fat</label>
+                          </td>
+  
+                          <td>
+                            <label>{{data?.element?.nutrition?.fat}} g</label>
+                          </td>
+                        </tr>
+
+                      
+  
+                      </tbody>
+                    </table>
+                  </div>
+
+
+
+            </div>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <div class="condition-wrapper">
+            <h6 class="card-subtitle tc">Description</h6>
+            <div class="condition-text">
+              <p>
+               {{data.element.description}}
+            </p>
+
+         
+            </div>
+          </div>
+        
+    </mat-dialog-actions>
+</div>

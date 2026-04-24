@@ -1,0 +1,70 @@
+<div class="dialog-wrapper">
+    <div mat-dialog-title>
+        <span class="dialog-heading">View Product</span>
+        <i mat-dialog-close class="bi bi-x-circle-fill primary-color"></i>
+    </div>
+    <mat-dialog-content class="mat-typography">
+
+        <div class="row">
+            <div class="col-12">
+             
+                <div class="table-responsive" >
+                    <table class="table star-table table-borderless mb-0" >
+  
+                      <tbody *ngFor="let i of data">
+                        <tr>
+                          <th>
+                            <label>Name</label>
+                          </th>
+                        
+                          <td>
+                            <p>{{i.productData.name}}</p>
+                          </td>
+                        </tr>
+
+                        <tr>
+                            <th>
+                              <label>Price</label>
+                            </th>
+                          
+                            <td>
+                              <p>{{i.productData.stock.mrp}}</p>
+                            </td>
+                          </tr>
+
+                          <tr>
+                            <th>
+                              <label>Size</label>
+                            </th>
+                          
+                            <td>
+                              <p>{{i.productData.stock.size}}</p>
+                            </td>
+                          </tr>
+
+                          <tr>
+                            <th>
+                              <label>Image</label>
+                            </th>
+                          
+                            <td>
+                              <img [src]="i?.productData?.images[0] ? i?.productData?.images[0]  :'assets/images/product-2.png'" alt="Product" width="40px" height="40px" class="rounded" >
+                            </td>
+                          </tr>
+                        <hr>
+
+                      </tbody>
+                    </table>
+                </div>
+
+             
+
+
+
+
+
+            </div>
+        </div>
+    </mat-dialog-content>
+
+</div>

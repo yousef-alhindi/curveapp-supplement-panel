@@ -1,0 +1,109 @@
+<div class="row align-items-center justify-content-between">
+    <div class="col-md-12 col-lg-12 col-xl-4 col-xxl-4 mb-3 ">
+        <div class="search-input">
+            <input type="text"    class="form-control"  placeholder="Search..." (keyup)="applyFilter($event)">
+            <i class="bi bi-search"></i>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-6 col-xl-3 col-xxl-2  ms-auto mb-3">
+        <button color="primary" mat-flat-button class="w-100" routerLink="/supplement/support-ticket/create-support-ticket">CREATE SUPPORT</button>
+    </div>
+    <div class="col-12 mt-4">
+        <div class="table-responsive">
+            <table mat-table [dataSource]="dataSource1" class="w-100">
+                <ng-container matColumnDef="s_no">
+                    <th mat-header-cell *matHeaderCellDef>Sr.No.</th>
+                    <td mat-cell *matCellDef="let element; let i = index;">
+                        {{i + 1}}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="ticket_id">
+                    <th mat-header-cell *matHeaderCellDef> Ticket ID</th>
+                    <td mat-cell *matCellDef="let element">
+                        {{ element?.ticketId }}
+                    </td>
+                </ng-container>
+
+                <!-- <ng-container matColumnDef="subject">
+                    <th mat-header-cell *matHeaderCellDef>Subject</th>
+                    <td mat-cell *matCellDef="let element">
+                        {{ element?.subject }}
+                    </td>
+                </ng-container> -->
+
+                <ng-container matColumnDef="description">
+                    <th mat-header-cell *matHeaderCellDef> Description</th>
+                    <td mat-cell *matCellDef="let element">
+                        <button class="btn btn-outline-success btn-sm"  (click)="descriptionView('500ms','500ms',element?.query)">View</button>
+                        </td>
+                </ng-container>
+
+                <ng-container matColumnDef="submision_date">
+                    <th mat-header-cell *matHeaderCellDef>Submission Date</th>
+                    <td mat-cell *matCellDef="let element">
+                        {{ element?.createdAt | date:'MMM dd, yyyy'}}
+                    </td>
+                   
+                </ng-container>
+
+                <ng-container matColumnDef="status">
+                    <th mat-header-cell *matHeaderCellDef>Status</th>
+                    <td mat-cell *matCellDef="let element">
+                        {{ element?.status == true ? 'Open' : 'Close'}}
+                    </td>
+                </ng-container>
+
+
+               
+                <!-- <ng-container matColumnDef="action">
+                    <th mat-header-cell *matHeaderCellDef>
+                            Action
+
+                    </th>
+                    <td mat-cell *matCellDef="let element">
+                        <div class="action-icon d-flex justify-content-start gap-4 align-items-center">
+                            <span class="action-head">
+                                <mat-icon  matTooltip="Edit" class="text-success" >
+                                    <img src="assets/images/edit_xxs.png" alt="edit">
+                                </mat-icon>
+                            </span>
+                            <span class="action-head">
+                                <mat-icon matTooltip="Delete" class="text-danger">
+                                    <img src="assets/images/delete_list.png" alt="delete">
+                                </mat-icon>
+                            </span>
+
+
+                            <span class="action-head">
+                                <mat-slide-toggle matTooltip="Block/Unblock" ></mat-slide-toggle>
+                            </span>
+
+
+                        </div>
+
+                    </td>
+                </ng-container> -->
+
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns1; sticky: true"></tr>
+
+                <tr mat-row *matRowDef="let row; columns: displayedColumns1"></tr>
+            </table>
+            <!-- <table class="text-center mt-4 " >
+                <div class="no-data">
+                    <h5>No Data Available</h5>
+                </div>
+            </table>
+            <table class="text-center mt-4 " >
+                <div class="no-data">
+                    <h5>No Search Result Found</h5>
+                </div>
+            </table> -->
+        </div>
+
+        <mat-paginator #MatPaginator1="matPaginator" [pageSizeOptions]="[15, 30, 45]">
+        </mat-paginator>
+
+    </div>
+</div>

@@ -1,0 +1,118 @@
+<div class="row">
+
+    <!-- <div class=" col-lg-4 col-xl-4 col-xxl-3  my-2">
+        <h6 class="rating-label">Average Rating</h6>
+        <div class="d-flex gap-2 align-items-center">
+            <h4 class="mb-0 rating-text">Lorem</h4>
+            <ngx-star-rating [id]="'rating2'" [disabled] ="true"></ngx-star-rating>        </div>
+
+    </div> -->
+
+
+    <div class=" col-lg-3 col-xl-4 col-xxl-3 my-2 ">
+        <div class="search-input">
+            <input type="text" class="form-control" placeholder="Search..." (keyup)="onSearch($event)">
+            <i class="bi bi-search"></i>
+        </div>
+    </div>
+
+    <div class="col-12">
+        <div class="order-wrap">
+          <h3>
+            Average Ratings  <span *ngIf="averageRating"> ({{averageRating | number:'1.1-1'}} out of 5)</span>
+          </h3>
+        </div>
+      </div>
+
+
+  
+
+    
+
+
+
+    <div class="col-12 mt-4">
+
+        <div class="table-responsive">
+            <table mat-table [dataSource]="dataSource1" class="w-100">
+                <ng-container matColumnDef="s_no">
+                    <th mat-header-cell *matHeaderCellDef>S.No.</th>
+                    <td mat-cell *matCellDef="let element; let i = index;">
+                        {{i + 1}}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef>Customer Name</th>
+                    <td mat-cell *matCellDef="let element">
+                        {{ element?.userId?.fullName}}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="order_id">
+                    <th mat-header-cell *matHeaderCellDef>Order ID</th>
+                    <td mat-cell *matCellDef="let element">
+                        {{ element?.orderId?.orderId }}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="date_time">
+                    <th mat-header-cell *matHeaderCellDef>Date & Time</th>
+                    <td mat-cell *matCellDef="let element">
+                        {{ element?.createdAt | date:'MMM dd, yyyy'}}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="ratings">
+                    <th mat-header-cell *matHeaderCellDef>View Ratings</th>
+                    <td mat-cell *matCellDef="let element">
+                        <button class="btn btn-outline-success btn-sm" (click)="ratingViewDialog('500ms','500ms',element)" >View</button>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="status">
+                    <th mat-header-cell *matHeaderCellDef>Status</th>
+                    <td mat-cell *matCellDef="let element">
+                        {{ element?.status}}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="action">
+                    <th mat-header-cell *matHeaderCellDef>Action</th>
+                    <td mat-cell *matCellDef="let element">
+                        <p class="text-danger mb-0 link " (click)="deleteData(element?._id)"><i class="bi bi-trash"></i></p>
+                    </td>
+                </ng-container>
+
+
+
+
+
+
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns1; sticky: true"></tr>
+
+                <tr mat-row *matRowDef="let row; columns: displayedColumns1"></tr>
+            </table>
+        </div>
+        <mat-paginator
+        #MatPaginator1
+        [pageSizeOptions]="[5, 10, 15]"
+        showFirstLastButtons
+        [length]="totalLength"
+        (page)="onPageChange($event)"
+        aria-label="Select page of periodic elements"
+      >
+      </mat-paginator>
+
+    </div>
+
+
+
+
+
+
+
+
+
+</div>

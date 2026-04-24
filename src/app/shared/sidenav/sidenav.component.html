@@ -1,0 +1,123 @@
+<div class="list-group" #target>
+  <div class="item-list" >
+
+    <a (click)="bindChildToParent(item.name, item)" *ngFor="let item of sidebarModules" routerLink="{{item.route}}" routerLinkActive="active"
+      class="list-group-item d-flex align-items-center gap-2 list-group-item-action">
+      <div class="side-img">
+        <img [src]=item.icon alt="icon">
+      </div>
+
+
+      {{item.name}}
+    </a>
+
+<!-- 
+    <a routerLink="/food/dashboard" routerLinkActive="active"
+      class="list-group-item d-flex align-items-center gap-2 list-group-item-action">
+
+      <div class="side-img">
+        <img src="assets/images/dashboard.png" alt="">
+      </div>
+
+      Dashboard
+    </a>
+
+    <a routerLink="/food/menu-mgmt" routerLinkActive="active"
+      class="list-group-item d-flex align-items-center gap-2 list-group-item-action">
+
+      <div class="side-img">
+        <img src="assets/images/package_management.png" alt="">
+      </div>
+      Menu Management
+    </a>
+
+    <a routerLink="/food/wallet-mgmt" routerLinkActive="active"
+    class="list-group-item d-flex align-items-center gap-2 list-group-item-action">
+    <div class="side-img">
+      <img src="assets/images/payment_management.png" alt="">
+    </div>
+      My Wallet
+    </a>
+
+
+    <a routerLink="/food/offer-mgmt" routerLinkActive="active"
+    class="list-group-item d-flex align-items-center gap-2 list-group-item-action">
+    <div class="side-img">
+      <img src="assets/images/offer_management.png" alt="">
+    </div>
+        Offer Management 
+    </a>
+
+    <a routerLink="/food/join-as-sponsor" routerLinkActive="active"
+    class="list-group-item d-flex align-items-center gap-2 list-group-item-action">
+    <div class="side-img">
+      <img src="assets/images/subscription.png" alt="">
+    </div>
+      Join As Sponsor 
+      </a>
+
+      <a routerLink="/food/support" routerLinkActive="active"
+    class="list-group-item d-flex align-items-center gap-2 list-group-item-action">
+    <div class="side-img">
+      <img src="assets/images/support.png" alt="">
+    </div>
+        Support
+    </a>
+
+    <a  routerLink="/food/terms-condition" routerLinkActive="active"
+    class="list-group-item d-flex align-items-center gap-2 list-group-item-action">
+    <div class="side-img">
+      <img src="assets/images/terms_and_conditions.png" alt="">
+    </div>
+    Terms & Conditions
+      </a>
+
+    <a routerLink="/food/privacy-policy" routerLinkActive="active"
+    class="list-group-item d-flex align-items-center gap-2 list-group-item-action">
+    <div class="side-img">
+      <img src="assets/images/privacy_policy.png" alt="">
+    </div>
+    Privacy Policy    </a>
+
+
+    <a (click)="scrollToElement(target)" routerLink="/food/about-us" routerLinkActive="active"
+    class="list-group-item d-flex align-items-center gap-2 list-group-item-action">
+    <div class="side-img">
+      <img src="assets/images/about_us.png" alt="">
+    </div>
+    About Us    </a>
+
+
+    <a (click)="scrollToElement(target)" routerLink="/food/faq" routerLinkActive="active"
+    class="list-group-item d-flex align-items-center gap-2 list-group-item-action">
+    <div class="side-img">
+      <img src="assets/images/faqs.png" alt="">
+    </div>
+    FAQs
+    </a>
+
+    <a  (click)="scrollToElement(target)"  routerLink="/food/contact-us" routerLinkActive="active"
+    class="list-group-item d-flex align-items-center gap-2 list-group-item-action">
+    <div class="side-img">
+      <img src="assets/images/contact_us.png" alt="">
+    </div>
+    Contact Us
+      </a> -->
+
+
+
+
+    <div class="logout" (click)="logoutDialog('500ms','500ms')">
+      <a class="list-group-item d-flex align-items-center gap-2 list-group-item-action">
+        <div class="d-flex">
+          <mat-icon>exit_to_app</mat-icon>
+        </div>
+        Logout
+      </a>
+
+    </div>
+
+
+
+  </div>
+  

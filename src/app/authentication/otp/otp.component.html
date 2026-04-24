@@ -1,0 +1,71 @@
+<div class="container">
+  <div class="top-logo">
+    <img src="assets/images/curve_logo.png" alt="logo" />
+  </div>
+</div>
+
+<div class="auth-panel" style="background-image: url('assets/images/bg.png')">
+  <div class="container">
+   
+
+    <div class="row">
+      <div class="col-md-6 d-flex align-items-center">
+        <div class="auth-content">
+          <h3 class="green-txt">
+            Partner with <span class="bold-green"> Curve! </span>
+          </h3>
+          <h4 class="banner-txt">
+            Increase Your <br />
+            Online Reaches
+          </h4>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="login-card ms-md-auto">
+          <!-- <div class="back-btn" routerLink="/login">
+            <i class="bi bi-chevron-left"></i>
+          </div> -->
+
+          <div class="log-top-txt">
+            <div class="text-center">
+              <h4 class="mt-3">OTP Verification</h4>
+
+              <h3>Enter OTP</h3>
+
+              <p *ngIf="this.restaurantCategoryId?.mobileNumber">6 digit OTP has been sent to your registered Mobile number</p>
+              <p *ngIf="this.restaurantCategoryId?.email">6 digit OTP has been sent to your registered Email address</p>
+
+            </div>
+          </div>
+
+          <div class="custom-input mb-3">
+            <div class="otp-wrapper">
+              <ng-otp-input [config]="{ length: 6 }" ngDefaultControl
+                (onInputChange)="onOtpChange($event)"  onkeypress="return event.charCode > 47 && event.charCode < 58;"></ng-otp-input>
+            </div>
+          </div>
+
+          <div class="sec mb-3">
+            <span  *ngIf="counter >0">in {{ getCounterData(counter) }} secs</span>
+          </div>
+
+          <div class="custom-flex mb-4" *ngIf="!showTimer && counter <= 0">
+            <p class="text-light">Didn't receive OTP?</p>
+            <p class="small-primary" *ngIf="!showTimer" (click)="resendOtp()"  >Resend new OTP</p>
+          </div>
+
+          <div class="auth-btn">
+            <button mat-flat-button class="w-100" color="primary" (click)="verifyOtp()">
+              Continue
+            </button>
+          </div>
+
+          <!-- <div class="mt-3">
+                        <p class="small-txt">Create An Account</p>
+                    </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

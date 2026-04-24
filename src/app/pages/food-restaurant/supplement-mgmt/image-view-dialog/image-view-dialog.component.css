@@ -1,0 +1,10 @@
+.view{
+    width: 100%;
+    height: 200px;
+    background-color: #F2F2F2;
+}
+
+.view img{
+    width: 100%;
+    height: 100%;
+}

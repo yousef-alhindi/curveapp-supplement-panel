@@ -1,0 +1,65 @@
+<ngx-ui-loader fgsType="three-bounce" fgsColor="#33BD8C" pbColor="#33BD8C" text="Please Wait..."></ngx-ui-loader>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>
+      <div class="sidenav-logo">
+        <img src="assets/images/dashboard_logo.png" alt="logo" class="" />
+      </div>
+    </mat-toolbar>
+
+    <app-sidenav></app-sidenav>
+  </mat-sidenav>
+  <mat-sidenav-content>
+
+    <mat-toolbar color="primary" class="justify-content-between">
+      <div class="d-flex align-items-center">
+        <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+          *ngIf="isHandset$ | async">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+
+
+        <div class="header-txt">
+          <h2>
+            <span>
+
+              <i *ngIf="(activatedModuleName !== 'Ratings') && (activatedModuleName !== 'My Profile') && (activatedModuleName !== 'Supplement Management') && (activatedModuleName !== 'Payment Management') && (activatedModuleName !== 'Order Management') && (activatedModuleName !== 'My Wallet') && (activatedModuleName !== 'Menu Management') && (activatedModuleName !== 'Dashboard') && (activatedModuleName !== 'Offer Management') && (activatedModuleName !== 'Join As Sponsor') && (activatedModuleName !== ' Support Tickets') && (activatedModuleName !== 'Terms & Conditions') && (activatedModuleName !== 'Privacy Policy') && (activatedModuleName !== 'About Us') && (activatedModuleName !== 'Contact Us') &&  (activatedModuleName !== 'FAQs')"
+                (click)="goBack()" ></i></span> 
+                {{activatedModuleName}}
+          </h2>
+          <p *ngIf="activatedModuleName === 'My Profile'" class="profile-description">
+            Manage your personal information and security of your account.
+          </p>
+
+        </div>
+
+
+
+
+      </div>
+
+      <div class="right-head d-flex gap-3">
+
+
+        <img src="assets/images/language.png" alt="language">
+        <img src="assets/images/notifications.png" alt="notification">
+
+
+      </div>
+
+    </mat-toolbar>
+    <hr class="header-hr">
+
+
+
+
+
+    <div class="main-body">
+      <router-outlet></router-outlet>
+    </div>
+
+
+
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,176 @@
+<div class="dialog-wrapper" *ngIf="data.type == 1 || data.type ==3 || data.type ==2">
+  <div mat-dialog-title>
+    <span class="dialog-heading">Item Details</span>
+    <i mat-dialog-close class="bi bi-x-circle-fill primary-color"></i>
+  </div>
+  <mat-dialog-content class="mat-typography">
+    <div class="row">
+      <div class="col-12">
+        <div class="table-card">
+          <div class="table-responsive">
+            <table class="table table-borderless">
+              <h1 class="text-dark h1">Package Name (if any)</h1>
+              <tbody *ngFor="let i of restroData?.bundles">
+                <tr >
+                  <td>
+                    <img width="50px" [src]="i?.bundleData?.image ? i?.bundleData?.image : 'assets/images/image_xxs.png'" alt="" />
+                    <label class="text-dark pl-4">{{i?.bundleData?.name }}</label>
+                  </td>
+
+                  <td>
+                    <label class="">X {{ i?.quantity }}</label>
+                  </td>
+
+                  <td>
+                    <label class="date">KWD {{ i?.amount }}</label>
+                  </td>
+                <!-- </tr> -->
+                 <!-- <br> -->
+                  <tr>
+                    Products
+                  </tr>
+                <tr
+                  *ngFor="
+                    let item of i?.bundleData?.products"
+                >
+                  <td>
+                    <img
+                      width="50px"
+                      [src]="
+                        item?.images[0]
+                          ? item?.images[0]
+                          : 'assets/images/image_xxs.png'
+                      "
+                      alt=""
+                    />
+                  </td>
+                  <td>
+                    <label class="text-dark pl-4">{{ item.name }}</label>
+                  </td>
+                  <td class="text-dark">{{item?.stockData?.size}} Kg</td>
+                </tr>
+              </tbody>
+              <tbody>
+                <label *ngIf="restroData?.items" >Item Details</label>
+                <tr
+                  *ngFor="
+                    let item of restroData?.items
+                  "
+                >
+                  <td>
+                    <img
+                      width="50px"
+                      [src]="
+                        item?.itemData?.images[0]
+                          ? item?.itemData?.images[0]
+                          : 'assets/images/image_xxs.png'
+                      "
+                      alt=""
+                    />
+                    <label class="text-dark pl-4"
+                      >{{ item?.itemData?.name }} ({{ item?.itemData?.stockData?.size }} Kg)</label
+                    >
+                  </td>
+
+                  <td>
+                    <label
+                      >X
+                      <span class="text-dark">{{
+                        item?.quantity
+                      }}</span>
+                    </label>
+                  </td>
+
+                  <td>
+                    <p class="text">KWD {{ item?.itemData?.stockData?.sellingPrice }}</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="table-card sub-table mt-3">
+          <div class="table-responsive">
+            <table class="table table-borderless">
+              <tbody>
+                <tr>
+                  <td>
+                    <label>Sub Total</label>
+                  </td>
+
+                  <td>
+                    <p class="text">
+                      KWD {{ restroData?.supplementCartId?.amount }}
+                    </p>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <label>Discount</label>
+                  </td>
+
+                  <td>
+                    <p class="text text-danger">
+                      -KWD {{ restroData?.discountedAmount }}
+                    </p>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <label>Delivery Charge (if any)</label>
+                  </td>
+
+                  <td>
+                    <p class="text">KWD {{ restroData?.deliveryAmount }}</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="table-card sub-table mt-3">
+          <div class="table-responsive border-0">
+            <table class="table table-borderless">
+              <tbody>
+                <tr>
+                  <td>
+                    <label class="text-dark"><strong>Total</strong> </label>
+                  </td>
+
+                  <td>
+                    <p class="text text-success">
+                      KWD {{ restroData?.totalAmount }}
+                    </p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-dialog-content>
+  <!-- <mat-dialog-actions>
+    <div class="condition-wrapper">
+      <div class="check-margin mb-3">
+        <div class="checkbox dialog-check">
+          <mat-checkbox class="example-margin" [(ngModel)]="viewInstruction">Instruction</mat-checkbox>
+        </div>
+      </div>
+
+      <div class="condition-text">
+        <p *ngIf="viewInstruction">
+          {{items?.instructions ? items?.instructions : 'No instructions'}}
+        </p>
+      </div>
+    </div>
+  </mat-dialog-actions> -->
+</div>
+
+
+
+
+

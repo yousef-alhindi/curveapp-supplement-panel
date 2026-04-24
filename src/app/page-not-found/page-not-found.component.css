@@ -1,0 +1,28 @@
+.not-found-wrapper{
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    background-color: var(--primary-color);
+}
+ 
+.not-found-wrapper h1 {
+    color: #fff;
+    font-size: 10em;
+    font-weight: bold;
+    text-shadow: 3px 3px 5px rgba(117, 128, 116, 0.95);
+    line-height: normal!important;
+  }
+
+.not-found-wrapper h2  {
+    text-shadow: 3px 3px 5px rgba(117, 128, 116, 0.95);
+
+}
+
+  .btn-light{
+    width: 200px;
+    padding: 12px;
+    font-size: 16px;
+    color: var(--primary-color);
+    font-weight: 500;
+  }

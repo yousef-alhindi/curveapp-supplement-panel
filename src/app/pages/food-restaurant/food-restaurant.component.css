@@ -1,0 +1,96 @@
+.sidenav-container {
+    height: 100%;
+  }
+  
+  .sidenav {
+    width: 280px;
+  }
+  
+  .sidenav .mat-toolbar {
+    position: fixed;
+    top: 0;
+    width: 280px;
+    background: #F5F5F5;    
+    justify-content: center;
+    /* margin: 20px 0px 0px 0px;  */
+   }
+  
+  .mat-toolbar.mat-primary {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+  }
+  
+  
+.header-txt span{
+  cursor: pointer;
+}
+.header-txt span i {
+  color: #000;
+  font-size: 23px;
+}
+
+  mat-sidenav{
+    background: #F5F5F5 ;
+    border: none;
+ }
+
+ .sidenav-logo img{
+   width: 160px;
+   margin-top: 20px;
+ }
+
+
+
+ .active {
+  z-index: 2;
+  color: #FFFFFF!important;
+  background: var(--primary-color) 0% 0% no-repeat padding-box;
+  opacity: 1;
+}
+
+.mat-icon {
+  display: block!important;
+  margin: 0 auto!important;
+}
+  
+.mat-toolbar, .mat-toolbar h1, .mat-toolbar h2, .mat-toolbar h3, .mat-toolbar h4, .mat-toolbar h5, .mat-toolbar h6 {
+  font-family: "Montserrat", sans-serif!important; 
+}
+
+
+.mat-toolbar h2{
+  font-size: 28px;
+  font-weight: bold;
+  letter-spacing: 0px;
+  color: #242424;
+
+}
+
+.header-hr{
+  margin: 0px 30px ;
+  border-color:  #2E4765!important;
+  
+}
+
+.right-head img{
+  width: 45px;
+  height:45px;
+  cursor: pointer;
+}
+
+.main-body{
+  /* background-color: red; */
+  margin: 30px;
+}
+
+.header-txt p{
+  font-size: 14px;
+  /* font: normal normal medium 18px/22px Montserrat; */
+color: #CCCCCC;
+margin-bottom: 0px;
+}
+
+mat-icon{
+  color: var(--primary-color);
+}

@@ -1,0 +1,92 @@
+.log-top-txt h3 {
+    font-weight: 600!important;   
+}
+
+.log-top-txt h4 {
+    margin-bottom: 20px;
+}
+
+.upload_image {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    width: 10%0;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.upload_image img{
+    margin-left: 14px;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+
+}
+
+label img {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+  }
+  .hoverable {
+    position: relative;
+    display: block;
+    cursor: pointer;
+    height: 40px;
+    width: 100%;
+    /* border-radius: 50%; */
+    /* background: red; */
+    border-radius: 10px;
+    display: flex;
+    justify-content: end;
+}
+  .hoverable .hover-text {
+    position: absolute;
+    display: block;
+    top: 50%;
+    right: 5%;
+    transform: translate(-0%,-50%);
+    z-index: 2;
+}
+  .hoverable .background{
+    position: absolute;
+    display: none;
+    top: 0;
+    left:  0;
+    bottom: 0;
+    right: 0;
+    background-color:rgba(255, 255, 255, 0.5);
+    pointer-events: none;
+    border-radius: 50%;
+    z-index: 1;
+  }
+  .hoverable:hover .hover-text{
+    display: block;
+  }
+  .hoverable:hover .background{
+    display: block;
+  }
+  
+  #fileInput{
+    display: none;
+  }
+
+  .hover-text img{
+    width: 20px;
+    height: 20px;
+    border-radius: 0px!important;
+  }
+
+
+  .custom-img-input{
+    background: #FFFFFF2B 0% 0% no-repeat padding-box;
+    border: 1px solid #FFFFFF;
+    border-radius: 10px;
+    opacity: 1;
+    height: 60px;
+    /* width: 100%; */
+    position: relative;
+  }
+

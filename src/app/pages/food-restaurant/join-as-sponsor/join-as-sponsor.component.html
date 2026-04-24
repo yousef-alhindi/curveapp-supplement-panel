@@ -1,0 +1,145 @@
+<div class="custom-tabs bid-tab">
+    <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start" [(selectedIndex)]="sponsorTabType"
+        (selectedTabChange)="onMainTabChanged($event)">
+        <mat-tab label="Restaurant Listing">
+            <div class="row align-items-center mt-2">
+                <div class="col-12 mt-4">
+                    <div class="table-responsive margin-res">
+                        <table mat-table [dataSource]="dataSource1" class="w-100">
+                            <ng-container matColumnDef="s_no">
+                                <th mat-header-cell *matHeaderCellDef>Rank</th>
+                                <td mat-cell *matCellDef="let element; let i = index">
+                                    {{ i + 1 + MatPaginator1.pageIndex * MatPaginator1.pageSize }}
+                                </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="name">
+                                <th mat-header-cell *matHeaderCellDef>Store Name</th>
+                                <td mat-cell *matCellDef="let element">
+                                    <span *ngIf="element?.supplementId != null">
+                                        {{ element?.supplementId?.name }}
+                                    </span>
+                                </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="logo">
+                                <th mat-header-cell *matHeaderCellDef>Store Logo</th>
+                                <td mat-cell *matCellDef="let element">
+                                    <img [src]="element?.supplementId?.addressDetails?.supLogo || 'assets/images/placeholder.jpg'" alt="logo" width="40px"
+                                        height="40px" class="rounded-circle" />
+                                </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="date">
+                                <th mat-header-cell *matHeaderCellDef>Date & Time</th>
+                                <td mat-cell *matCellDef="let element">
+                                    {{ element?.updatedAt | date : "mediumDate" }} |
+                                    {{ element?.updatedAt | date : "shortTime" }}
+                                </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="amt">
+                                <th mat-header-cell *matHeaderCellDef>Bid Amount</th>
+                                <td mat-cell *matCellDef="let element">
+                                    KD {{ element?.amount }}
+                                </td>
+                            </ng-container>
+
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns1; sticky: true"></tr>
+                            <tr [ngClass]="{
+                                  'make-gold': row?.supplementId?.resName == currentRestaurantName
+                                }" mat-row *matRowDef="let row; columns: displayedColumns1"></tr>
+                        </table>
+
+                        <table class="text-center mt-4" *ngIf="dataSource1.data.length < 1">
+                            <div class="no-data">
+                                <h5>No Data Available</h5>
+                            </div>
+                        </table>
+                    </div>
+                    <mat-paginator #MatPaginator1="matPaginator" [pageSizeOptions]="[15, 30, 45]"></mat-paginator>
+                </div>
+            </div>
+
+        </mat-tab>
+
+        <mat-tab label="Bidding History">
+            <div class="row align-items-center">
+                <div class="col-12 mt-4">
+                    <div class="table-responsive">
+                        <table mat-table [dataSource]="dataSource2" class="w-100">
+                            <ng-container matColumnDef="s_no">
+                                <th mat-header-cell *matHeaderCellDef>Sr. No</th>
+                                <td mat-cell *matCellDef="let element; let i = index">
+                                    {{ i + 1 }}
+                                </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="amt">
+                                <th mat-header-cell *matHeaderCellDef>Bid Amount</th>
+                                <td mat-cell *matCellDef="let element">
+                                    KD {{ element?.amount }}
+                                </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="date">
+                                <th mat-header-cell *matHeaderCellDef>Date & Time</th>
+                                <td mat-cell *matCellDef="let element">
+                                    <!-- {{ element?.updatedAt | date :'short'}} -->
+                                    {{ element?.updatedAt | date : "mediumDate" }} |
+                                    {{ element?.updatedAt | date : "shortTime" }}
+                                </td>
+                            </ng-container>
+
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns2; sticky: true"></tr>
+
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns2"></tr>
+                        </table>
+                        <table class="text-center mt-4" *ngIf="dataSource2.data.length < 1">
+                            <div class="no-data">
+                                <h5>No Data Available</h5>
+                            </div>
+                        </table>
+                    </div>
+                    <mat-paginator #MatPaginator2="matPaginator" [pageSizeOptions]="[15, 30, 45]">
+                    </mat-paginator>
+                </div>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+
+    <div *ngIf="sponsorTabType == 0" class="bid-row">
+        <div class="row align-items-center">
+            <div class="col-lg-5 col-xl-6">
+                <button class="btn btn-secondary w-100" (click)="bidDialog('500ms', '500ms', '6', spendPerDayAmount)">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            Bids Spend Per Day -
+                            <strong>{{ spendPerDayAmount || "0" }} KD</strong>
+                        </div>
+
+                        <div class="edit">
+                            <img src="assets/images/edit_cricle_ic.png" alt="edit" />
+                        </div>
+                    </div>
+                </button>
+            </div>
+
+            <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3">
+                <div class="toggle-btn">
+                    <div class="btn-group w-100" role="group" aria-label="Basic checkbox toggle button group">
+                        <input type="checkbox" [disabled]="isBlockedStopBtn" [checked]="!isBlockedStopBtn"
+                            class="btn-check" id="btncheck1" autocomplete="off" />
+                        <label class="btn btn-outline-primary" (click)="stopBid()" for="btncheck1">STOP BID</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 bid-btn">
+                <button color="primary" mat-flat-button class="w-100" (click)="bidDialog('500ms', '500ms', '5', '')">
+                    PLACE BID
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

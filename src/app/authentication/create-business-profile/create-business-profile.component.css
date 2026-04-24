@@ -1,0 +1,48 @@
+
+
+.login-card {
+    padding: 28px;
+    width: 100%!important;
+}
+
+/* 
+.radio-col:nth-child(1){
+    text-align: end;
+
+}
+
+.radio-col:nth-child(2){
+    text-align: start;
+} */
+
+.mat-mdc-radio-button.mat-accent:nth-child(1){
+    text-align: end!important;
+    padding-right: 2rem!important;
+}
+
+.mat-mdc-radio-button.mat-accent:nth-child(2){
+    text-align: start!important;
+    padding-left: 2rem!important;
+}
+.dialcode-title {
+    position: relative;
+    padding: 0px 12px 0px 0px;
+    margin-right: 12px;
+    font-size: 13px !important;
+}
+.dialcode-title:after {
+    content: "";
+    display: block;
+    height: 27px;
+    position: absolute;
+    width: 1px;
+    background: #fff;
+    right: 0px;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+
+
+

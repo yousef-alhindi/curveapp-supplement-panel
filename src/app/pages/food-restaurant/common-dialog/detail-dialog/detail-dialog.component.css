@@ -1,0 +1,243 @@
+/* 
+label{
+    font-size:18px;
+    font-weight: bold;
+    letter-spacing: 0.6px;
+    color: #000000;
+    margin-bottom: 0px;
+}
+
+
+
+
+table tr td{
+    width: 50%;
+    padding:10px 0px ;
+}
+
+
+table tr td:nth-child(2){
+    text-align: right;
+} */
+/* .card{
+    background: #F5F5F5 0% 0% no-repeat padding-box;
+    border-radius: 12px;
+    border: none;
+}
+
+.card-header{
+    background: #33BD8C 0% 0% no-repeat padding-box;
+    border-radius: 12px 12px 0px 0px;
+    padding-top:15px;
+    padding-bottom: 15px;
+}
+
+.card-header h4{
+    font-size:18px;
+    letter-spacing: 0.6px;
+    color: #FFFFFF;
+    margin-bottom: 0;
+    font-weight: 600;
+} */
+
+
+label{
+    font-size: 18px;
+    font-weight: normal;
+    color: #6E6E6E;
+    letter-spacing: 0.6px;
+}
+
+.text{
+    font-size:18px;
+    font-weight: 600;
+    letter-spacing: 0.6px;
+    color: #000000;
+}
+
+/* .table-card .table>:not(caption)>*>*{
+background-color: #F5F5F5;
+    
+} */
+/* 
+.table-card .table tr td{
+    width: 50%;
+    padding:10px 0px ;
+} */
+
+table tr td{
+
+    padding: 10px 0px;
+}
+
+table tr td:nth-child(1){
+  
+    width: 47%;
+
+} 
+
+table tr td:nth-child(2){
+    width: 6%;
+    text-align: center!important;
+
+} 
+.pl-4{
+    padding-left: 20px;
+}
+table tr td:nth-child(3){
+    width: 47%;
+    text-align: right;
+
+} 
+
+
+.sub-table table tr td:nth-child(1){
+    width: 50%!important;
+} 
+
+.sub-table table tr td:nth-child(2){
+    width: 50%!important;
+    text-align: right!important;
+} 
+
+.sub-table .text{
+    margin-bottom: 0px!important;
+    color: #6E6E6E;
+}
+
+
+
+
+.table-card .table-responsive{
+    border-bottom: 1px dashed lightgray;
+}
+
+
+.card-subtitle{
+    font-size:18px;
+    font-weight: 600;
+    letter-spacing: 0.6px;
+    color: #000000;
+    margin-bottom: 20px;
+}
+
+
+.tc{
+    font-size:16px;
+    margin-bottom: 16px;
+}
+
+.condition-text p{
+    text-align: left;
+    font-size: 14px;
+    font-weight: normal;
+    color: #6E6E6E;
+    /* margin-bottom: 0; */
+}
+
+.condition-text p :last-child{
+    margin-bottom: 0px;
+}
+
+
+.condition-text{
+    min-height: auto;
+    max-height: 100px;
+    overflow-y: auto;
+}
+
+
+.btn-light{
+    text-align: center;
+    font-size:14px;
+    font-weight: 600;
+    letter-spacing: 0.48px;
+    color: #33BD8C;
+    padding: 4px 16px;
+    background: #FFFFFF 0% 0% no-repeat padding-box!important;
+    border-radius: 6px;
+}
+
+.custom-select{
+    width: 170px;
+}
+
+.text-success{
+    color: #037713!important;
+    font-weight: 500;
+}
+
+.text-danger{
+    font-weight: 500;
+
+}
+
+.tab-select{
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 9;
+}
+
+.inner-custom-tab{
+    position: relative;
+}
+
+
+
+.tc{
+    margin-bottom: 16px;
+    font-size:18px;
+    font-weight: 600;
+    letter-spacing: 0.6px;
+    color: #000000;
+}
+
+
+.condition-wrapper{
+    background: #F7F7F7 0% 0% no-repeat padding-box;
+    padding:20px 40px;
+    width: 100%;
+}
+
+.condition-text p{
+    text-align: left;
+    font-size: 14px;
+    font-weight: normal;
+    color: #6E6E6E;
+    /* margin-bottom: 0; */
+}
+
+.condition-text p:last-child{
+    margin-bottom: 0px;
+}
+
+.condition-text{
+    min-height: auto;
+    max-height: 100px;
+    overflow-y: auto;
+}
+
+
+
+.date{
+font-weight: 600;
+}
+
+.checkbox .mat-mdc-checkbox label {
+    color: #000000!important;
+    margin-left: 10px;
+}
+
+.text-dark{
+    font-size:20px;
+    font-weight: 600;
+    letter-spacing: 0.6px;
+    color: #000000;
+    font-family: "Montserrat", sans-serif;
+
+}
+
+.h1{
+    font-size: 24px!important;
+}

@@ -1,0 +1,418 @@
+<div class="custom-tabs">
+  <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start" [(selectedIndex)]="tabType"
+    (selectedTabChange)="onMainTabChanged($event)">
+    <mat-tab label="Enrolled  List">
+      <div class="inner-custom-tab mt-4">
+        <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start" [(selectedIndex)]="tabId"
+          (selectedTabChange)="onTabChanged($event)">
+          <mat-tab label="Offer Banner">
+            <div *ngIf="!filterEnrolledOfferList || filterEnrolledOfferList.length == 0" class="row mt-4 no-data">
+              <h5 class="text-center">No Data Available</h5>
+            </div>
+            <div class="row mt-4" *ngIf="filterEnrolledOfferList && filterEnrolledOfferList.length != 0">
+              <div class="col-lg-6 my-3 d-md-flex align-items-stretch" *ngFor="let item of filterEnrolledOfferList">
+                <div class="offer-card w-100">
+                  <div class="card h-100">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                      <h4>{{ item.name }}</h4>
+                      <mat-slide-toggle [checked]="item?.isActive" (change)="enableDisableStaff($event, item)">
+                      </mat-slide-toggle>
+                    </div>
+                    <div class="card-body table-card">
+                      <div class="table-responsive">
+                        <table class="table table-borderless">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <label>Start Date</label>
+                                <p class="text">{{ item.startDate | date }}</p>
+                              </td>
+
+                              <td>
+                                <label>End Date</label>
+                                <p class="text">{{ item.endDate | date }}</p>
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <td>
+                                <label>Discount Type</label>
+                                <p class="text">
+                                  {{ handleDiscountType(item) }}
+                                </p>
+                              </td>
+
+                              <td>
+                                <label>Eligible</label>
+                                <p class="text" *ngIf="item.eligibityCriteria == 1">
+                                  First Order
+                                </p>
+                                <p class="text" *ngIf="item.eligibityCriteria == 2">
+                                  Every Order
+                                </p>
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <td>
+                                <label>Discount Upto</label>
+                                <p class="text">
+                                  {{ item.discountUpto }} KD MAX
+                                </p>
+                              </td>
+
+                              <td>
+                                <label>Enrolled Date & Time</label>
+                                <p class="text">
+                                  {{ item?.createdAt | date }} at
+                                  {{ item?.createdAt | date : "shortTime" }}
+                                </p>
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <td>
+                                <label>Promo Code</label>
+                                <p class="text">
+                                  {{ item?.promoCode || "N/A" }}
+                                </p>
+                              </td>
+
+                              <td>
+                                <label>Join Fee</label>
+                                <p class="text text-success fw-bold">
+                                  {{ item.joinFee != 0 ? item.joinFee + " KD" :  "Free to Join"}}
+                                </p>
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <td>
+                                <label>Banner Type</label>
+                                <p class="text">
+                                  {{
+                                  item?.bannerType == 1
+                                  ? "Home Banner"
+                                  : "Service Banner"
+                                  }}
+                                </p>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+
+                      <div class="condition-wrapper mt-4">
+                        <h6 class="card-subtitle tc">T&C</h6>
+                        <div class="condition-text">
+                          <p>{{ item?.termAndCondition || "N/A" }}</p>
+                          <!-- <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic, nihil delectus consectetur minima eligendi accusamus saepe earum sint ad laudantium obcaecati
+                           </p> -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </mat-tab>
+
+          <mat-tab label="Join Category">
+            <div class="row align-items-center">
+              <div class="col-12 mt-4">
+                <div class="table-responsive">
+                  <table mat-table [dataSource]="dataSource1" class="w-100">
+                    <ng-container matColumnDef="s_no">
+                      <th mat-header-cell *matHeaderCellDef>Sr.No.</th>
+                      <td mat-cell *matCellDef="let element; let i = index">
+                        {{ getSerialNumber1(i) }}
+                      </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="name">
+                      <th mat-header-cell *matHeaderCellDef>Category Name</th>
+                      <td mat-cell *matCellDef="let element">
+                        {{ element?.categoryId?.categoryName }}
+                      </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="type">
+                      <th mat-header-cell *matHeaderCellDef>Join Type</th>
+                      <td mat-cell *matCellDef="let element">
+                        {{
+                        element?.categoryId?.joiningFeeType == 1
+                        ? "Free"
+                        : "KD " + element?.categoryId?.joinFee
+                        }}
+                      </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="description">
+                      <th mat-header-cell *matHeaderCellDef>Description</th>
+                      <td mat-cell *matCellDef="let element">
+                        <button class="btn btn-outline-success btn-sm" (click)="
+                            viewDialog(
+                              '500ms',
+                              '500ms',
+                              element?.categoryId?.description
+                            )
+                          ">
+                          View
+                        </button>
+                      </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="date">
+                      <th mat-header-cell *matHeaderCellDef>Joining Date</th>
+                      <td mat-cell *matCellDef="let element">
+                        <!-- {{ element?.updatedAt | date}} -->
+                        {{ element?.updatedAt | date : "mediumDate" }} |
+                        {{ element?.updatedAt | date : "shortTime" }}
+                      </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="action">
+                      <th class="text-center" mat-header-cell *matHeaderCellDef>
+                        Action
+                      </th>
+                      <td mat-cell *matCellDef="let element">
+                        <div class="action-icon d-flex justify-content-center gap-4 align-items-center">
+                          <span class="action-head">
+                            <mat-slide-toggle [(ngModel)]="element.isActive" matTooltip="Enable/Disable"
+                              (change)="toggleEvent($event, element?._id)"></mat-slide-toggle>
+                          </span>
+                        </div>
+                      </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns1; sticky: true"></tr>
+
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns1"></tr>
+                  </table>
+                  <table class="w-100">
+                    <div class="text-center mt-4 no-data" *ngIf="dataSource1.data.length == 0">
+                      <h5 class="text-center">No Data Available</h5>
+                    </div>
+                  </table>
+                </div>
+                <mat-paginator #MatPaginator1="matPaginator" (page)="onPageChange1($event)" [length]="totalLength1"
+                  [pageSize]="pageSize1" [pageSizeOptions]="[15, 30, 45]">
+                </mat-paginator>
+              </div>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+
+        <div class="custom-select tab-select" *ngIf="tabId == 0">
+          <select  class="form-select"(change)="handleEnrolledBannerFilter($event)">
+            <option [value]="0">All</option>
+            <option [value]="1">Home Banner</option>
+            <option [value]="2">Service Banner</option>
+          </select>
+        </div>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Enrol Your Store">
+      <div class="inner-custom-tab mt-4">
+        <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start" [(selectedIndex)]="tabId2"
+          (selectedTabChange)="onTab2Changed($event)">
+          <mat-tab label="Offer Banner">
+            <div *ngIf="!filterUewOfferList || filterUewOfferList.length == 0" class="row mt-4 no-data">
+              <h5 class="text-center">No Data Available</h5>
+            </div>
+            <div class="row mt-4">
+              <div class="col-lg-6 my-3 d-md-flex align-items-stretch" *ngFor="let item of filterUewOfferList">
+                <div class="offer-card w-100">
+                  <div class="card h-100">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                      <h4>{{ item.name }}</h4>
+                      <button (click)="joinNewOffer(item)" type="button" class="btn btn-light btn-sm">
+                        Join
+                      </button>
+                    </div>
+                    <div class="card-body table-card">
+                      <div class="table-responsive">
+                        <table class="table table-borderless">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <label>Start Date</label>
+                                <p class="text">{{ item.startDate | date }}</p>
+                              </td>
+
+                              <td>
+                                <label>End Date</label>
+                                <p class="text">{{ item.endDate | date }}</p>
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <td>
+                                <label>Discount Type</label>
+                                <p class="text">
+                                  {{ handleDiscountType(item) }}
+                                </p>
+                              </td>
+
+                              <td>
+                                <label>Discount Upto</label>
+                                <p class="text">
+                                  {{ item.discountUpto }} KD MAX
+                                </p>
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <td>
+                                <label>Eligible</label>
+                                <p class="text" *ngIf="item.eligibityCriteria == 1">
+                                  First Order
+                                </p>
+                                <p class="text" *ngIf="item.eligibityCriteria == 2">
+                                  Every Order
+                                </p>
+                              </td>
+                              <td>
+                                <label>Promo Code</label>
+                                <p class="text">
+                                  {{ item?.promoCode || "N/A" }}
+                                </p>
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <td>
+                                <label>Join Fee</label>
+                                <p class="text text-success fw-bold">
+                                  {{ item.joinFee != 0 ? item.joinFee + " KD" :  "Free to Join"}} 
+                                </p>
+                              </td>
+
+                              <td>
+                                <label>Banner Type</label>
+                                <p class="text">
+                                  {{
+                                  item?.bannerType == 1
+                                  ? "Home Banner"
+                                  : "Service Banner"
+                                  }}
+                                </p>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+
+                      <div class="condition-wrapper mt-4">
+                        <h6 class="card-subtitle tc">T&C</h6>
+                        <div class="condition-text">
+                          <p>
+                            {{ item?.termAndCondition || "N/A" }}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </mat-tab>
+
+          <mat-tab label="Join Category">
+            <div class="row align-items-center">
+              <div class="col-12 mt-4">
+                <div class="table-responsive">
+                  <table mat-table [dataSource]="dataSource2" class="w-100">
+                    <ng-container matColumnDef="s_no">
+                      <th mat-header-cell *matHeaderCellDef>Sr.No.</th>
+                      <td mat-cell *matCellDef="let element; let i = index">
+                        {{ getSerialNumber(i) }}
+                      </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="name">
+                      <th mat-header-cell *matHeaderCellDef>Category Name</th>
+                      <td mat-cell *matCellDef="let element">
+                        {{ element?.categoryName }}
+                      </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="type">
+                      <th mat-header-cell *matHeaderCellDef>Join Type</th>
+                      <td mat-cell *matCellDef="let element">
+                        {{
+                        element?.joiningFeeType == "1"
+                        ? "Free"
+                        : "KD " + element.joinFee
+                        }}
+                      </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="description">
+                      <th mat-header-cell *matHeaderCellDef>Description</th>
+                      <td mat-cell *matCellDef="let element">
+                        <button class="btn btn-outline-success btn-sm" (click)="
+                            viewDialog('500ms', '500ms', element.description)
+                          ">
+                          View
+                        </button>
+                      </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="status">
+                      <th mat-header-cell *matHeaderCellDef>Status</th>
+                      <td mat-cell *matCellDef="let element">
+                        <span *ngIf="element?.status == '1'" class="text-success">
+                          Active
+                        </span>
+                        <span *ngIf="element?.status != '1'" class="text-danger">
+                          Inactive
+                        </span>
+                      </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="action">
+                      <th class="text-center" mat-header-cell *matHeaderCellDef>
+                        Action
+                      </th>
+                      <td mat-cell *matCellDef="let element">
+                        <div class="action-icon d-flex justify-content-center gap-4 align-items-center">
+                          <span class="action-head">
+                            <button class="btn btn-success px-4" (click)="joinNewCategory(element)">
+                              Join
+                            </button>
+                          </span>
+                        </div>
+                      </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns2; sticky: true"></tr>
+
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns2"></tr>
+                  </table>
+                  <table class="table table-borderless">
+                    <div class="text-center mt-4 no-data" *ngIf="dataSource2.data.length == 0">
+                      <h5 class="text-center">No Data Available</h5>
+                    </div>
+                  </table>
+                </div>
+                <mat-paginator #MatPaginator2="matPaginator" (page)="onPageChange($event)" [length]="totalLength"
+                  [pageSize]="pageSize" [pageSizeOptions]="[15, 30, 45]">
+                </mat-paginator>
+              </div>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+        <div class="custom-select tab-select" *ngIf="tabId2 == 0">
+          <select  class="form-select" (change)="handleBannerFilter($event)">
+            <option [value]="0">All</option>
+            <option [value]="1">Home Banner</option>
+            <option [value]="2">Service Banner</option>
+          </select>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>

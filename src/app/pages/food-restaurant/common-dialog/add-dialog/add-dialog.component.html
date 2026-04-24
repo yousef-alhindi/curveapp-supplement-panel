@@ -1,0 +1,477 @@
+<div class="dialog-wrapper" *ngIf="data.type == '3'">
+    <div mat-dialog-title>
+        <span class="dialog-heading">Delivery Charges</span>
+        <i mat-dialog-close class="bi bi-x-circle-fill primary-color"></i>
+    </div>
+    <mat-dialog-content class="mat-typography">
+        <form [formGroup]="deliverychargeform">
+
+            <div class="row my-3">
+                <div class="col-12">
+                    <div class="custom-form-input mb-4">
+                        <label class="dialog-label mb-2">Free Delivery</label>
+                        <mat-form-field appearance="outline" class="w-100">
+                            <input matInput formControlName="minOrderToFree" placeholder="Enter Free Delivery"
+                                onkeypress="return event.charCode > 47 && event.charCode < 58;" />
+                        </mat-form-field>
+                        <div *ngIf="submitted && h['minOrderToFree'].errors" class="text-danger">
+                            <div *ngIf="h['minOrderToFree'].errors['required']">
+                                Free Delivery is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="custom-form-input mb-4">
+                        <label class="dialog-label mb-2">Delivery Charges</label>
+                        <mat-form-field appearance="outline" class="w-100">
+                            <input matInput formControlName="deliveryCharge" placeholder="Enter Delivery Charges"
+                                onkeypress="return event.charCode > 47 && event.charCode < 58;" />
+                        </mat-form-field>
+                        <div *ngIf="submitted && h['deliveryCharge'].errors" class="text-danger">
+                            <div *ngIf="h['deliveryCharge'].errors['required']">
+                                Delivery Charges is required
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <button mat-flat-button color="primary" class="w-260" (click)="AddDeliveryCharge()">SAVE</button>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+    </mat-dialog-content>
+</div>
+
+
+<div class="dialog-wrapper" *ngIf="data.type == '1'">
+
+    <div mat-dialog-title>
+        <span class="dialog-heading">{{data.element?'Edit':'Add'}} Category</span>
+        <i mat-dialog-close class="bi bi-x-circle-fill primary-color"></i>
+    </div>
+
+    <mat-dialog-content class="mat-typography">
+        <form [formGroup]="categoryForm">
+
+            <div class="row my-3">
+                <div class="col-12">
+                    <div class="custom-form-input mb-4">
+                        <label class="dialog-label mb-2">Enter Category Name</label>
+                        <mat-form-field appearance="outline" class="w-100">
+                            <input matInput formControlName="categoryName" placeholder="Type Here"
+                            onkeypress="return event.target.selectionStart === 0 ? event.key !== ' ' : true;" />
+                        </mat-form-field>
+                        <div *ngIf="submitted && f['categoryName'].errors" class="text-danger">
+                            <div *ngIf="f['categoryName'].errors['required']">
+                                Category Name is required
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <button mat-flat-button color="primary" class="w-260"
+                            (click)="Addcategory()">{{data.element?'Update':'Submit'}}</button>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+    </mat-dialog-content>
+</div>
+
+
+<div class="dialog-wrapper" *ngIf="data.type == '4'">
+
+    <div mat-dialog-title>
+        <span class="dialog-heading">Add Amount</span>
+        <i mat-dialog-close class="bi bi-x-circle-fill primary-color"></i>
+    </div>
+
+    <mat-dialog-content class="mat-typography">
+        <form [formGroup]="AddWalletAmount">
+            <div class="row my-3">
+                <div class="col-12">
+                    <div class="custom-form-input mb-4">
+                        <label class="dialog-label mb-2">Enter Amount</label>
+                        <mat-form-field appearance="outline" class="w-100">
+                            <input matInput placeholder="KD" formControlName="amount"
+                                onkeypress="return event.charCode > 47 && event.charCode < 58;" />
+                        </mat-form-field>
+                        <div *ngIf="submitted && d['amount'].errors" class="text-danger">
+                            <div *ngIf="d['amount'].errors['required']">
+                                Amount is required
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="text-center">
+                        <button mat-flat-button (click)="AddwalletAmount()" color="primary"
+                            class="w-260">Continue</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </mat-dialog-content>
+</div>
+
+
+<div class="dialog-wrapper" *ngIf="data.type == '2'">
+    <div mat-dialog-title>
+        <span class="dialog-heading">{{data?._id ? 'Edit Item' : 'Add Item'}}</span>
+        <i mat-dialog-close class="bi bi-x-circle-fill primary-color"></i>
+    </div>
+    <mat-dialog-content>
+        <form [formGroup]="AdditemForm">
+
+            <div class="row gx-5 my-3">
+                <div class="col-lg-8">
+                    <div class="custom-form-input mb-4 pb-3">
+                        <label class="dialog-label mb-2">Item Name</label>
+                        <mat-form-field appearance="outline" class="w-100">
+                            <input matInput formControlName="name" placeholder="Name"    onkeypress="return event.target.selectionStart === 0 ? event.key !== ' ' : true;" />
+                        </mat-form-field>
+                        <div *ngIf="submitted && g['name'].errors" class="text-danger">
+                            <div *ngIf="g['name'].errors['required']">
+                                Item Name is required
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row mb-4" formGroupName = nutrition>
+                        <label class="dialog-label mb-2">Add Nutrition</label>
+
+                        <div class="col-lg-6 mb-3">
+                            <div class="input-group">
+                                <span class="input-group-text">Calories</span>
+                                <input type="text" class="form-control" placeholder="Enter Value" formControlName="calories"  onkeypress="return event.charCode > 47 && event.charCode < 58;">
+                            </div>
+                            <div *ngIf="submitted && nutritionFB['calories'].errors" class="text-danger">
+                                <div *ngIf="nutritionFB['calories'].errors['required']">
+                                    Calories value is required
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 mb-3">
+                            <div class="input-group">
+                                <span class="input-group-text">Carbs</span>
+                                <input type="text" class="form-control" placeholder="Enter Value" formControlName="carbs"  onkeypress="return event.charCode > 47 && event.charCode < 58;">
+                              </div>
+                              <div *ngIf="submitted && nutritionFB['carbs'].errors" class="text-danger">
+                                <div *ngIf="nutritionFB['carbs'].errors['required']">
+                                    Carbs value is required
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 mb-3">
+                            <div class="input-group">
+                                <span class="input-group-text">Protein</span>
+                                <input type="text" class="form-control" placeholder="Enter Value"  formControlName="protein" onkeypress="return event.charCode > 47 && event.charCode < 58;">
+                            </div>
+                            <div *ngIf="submitted && nutritionFB['protein'].errors" class="text-danger">
+                                <div *ngIf="nutritionFB['protein'].errors['required']">
+                                    Protein value is required
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 mb-3">
+                            <div class="input-group">
+                                <span class="input-group-text">Fat</span>
+                                <input type="text" class="form-control" placeholder="Enter Value" formControlName="fat" onkeypress="return event.charCode > 47 && event.charCode < 58;" >
+                              </div>
+                              <div *ngIf="submitted && nutritionFB['fat'].errors" class="text-danger">
+                                <div *ngIf="nutritionFB['fat'].errors['required']">
+                                    Fat value is required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="custom-form-input mb-4">
+                        <label class="dialog-label mb-2">Package Price</label>
+                        <mat-form-field appearance="outline" class="w-100 ">
+                            <input matInput formControlName="price" placeholder="KD"
+                                onkeypress="return event.charCode >= 46 && event.charCode < 58 ; "    (keypress)="onPriceKeyPress($event)"/>
+                      </mat-form-field>
+                        <div *ngIf="submitted && g['price'].errors" class="text-danger">
+                            <div *ngIf="g['price'].errors['required']">
+                                Package Price is required
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="custom-form-input custom-textarea">
+                        <label class="dialog-label mb-2">Description</label>
+                        <mat-form-field appearance="outline" class="w-100">
+                            <textarea matInput formControlName="description" placeholder="Type here..." rows="5"
+                            onkeypress="return event.target.selectionStart === 0 ? event.key !== ' ' : true;"></textarea>
+                        </mat-form-field>
+                        <div *ngIf="submitted && g['description'].errors" class="text-danger">
+                            <div *ngIf="g['description'].errors['required']">
+                                Description is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4" style="border-left: 1px dashed lightgray;" >
+                    <div class="profile mb-4">
+                        <label class="dialog-label mb-2">Upload</label>
+                        <p class="text-muted mb-4">550*440 pixels minimum size</p>
+                        <div class="upload_image">
+                            <label class="hoverable hoverable1" for="fileInput">
+                                <img [src]="itemImage ? itemImage : 'assets/images/img-bg.png'">
+                                <div class="hover-text mt-0 text-center d-block text-highlight :">
+                                    <img src= 'assets/images/upload_pic.png' alt="upload" />
+                                    <p class="mb-0" *ngIf="!itemImage">Upload Image</p>
+                                </div>
+
+                            </label>
+                            <br />
+                            <input id="fileInput" type='file' (change)="onSelectFile($event)" accept=".png, .jpg, .jpeg" formControlName="image">
+                        </div>
+                        <mat-error *ngIf="submitted && itemImage == undefined">Please select
+                            Image
+                        </mat-error>
+                    </div>
+
+                    <div class="custom-form-input custom-textarea mb-4">
+                        <label class="dialog-label mb-2">Item Type</label>
+                        <div class="payment-radio d-flex justify-content-between">
+                            <mat-radio-group aria-label="Select an option" formControlName="itemType">
+                                <mat-radio-button [value]="1">Veg</mat-radio-button>
+                                <mat-radio-button [value]="2">Non-Veg</mat-radio-button>
+                            </mat-radio-group>
+
+                        </div>
+                        <div *ngIf="submitted && g['itemType'].errors" class="text-danger">
+                            <div *ngIf="g['itemType'].errors['required']">
+                                Item Type is required
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="text-center">
+                        <button mat-flat-button color="primary" class="w-100" (click)="Additem()">SAVE</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </mat-dialog-content>
+</div>
+
+
+
+
+<!--Place BID Dialog -->
+<div class="dialog-wrapper" *ngIf="data.type == '5'">
+    <div mat-dialog-title>
+        <span class="dialog-heading">Place Bid</span>
+        <i mat-dialog-close class="bi bi-x-circle-fill primary-color"></i>
+    </div>
+    <mat-dialog-content class="mat-typography">
+        <form [formGroup]="placeBidForm">
+
+            <div class="row my-3">
+                <div class="col-12">
+                    <div class="custom-form-input mb-4">
+                        <label class="dialog-label mb-2">Enter Bid Amount </label> <span class="label-spn"> (Initial Amount - KD 1)</span>
+                        <mat-form-field appearance="outline" class="w-100">
+                            <input matInput (keypress)="onKeyPress($event)" [formControl]="bidAmount" placeholder="KD" />
+                        </mat-form-field>
+                        <mat-error class="text-danger" *ngIf="bidAmount.invalid && submitted">
+                            <div *ngIf="bidAmount.errors?.['required']">Bid amount is required.</div>
+                        </mat-error>
+                    </div>
+                 
+
+                    <div class="text-center">
+                        <button mat-flat-button color="primary" class="w-260" (click)="placeBidNOw()">PLACE BID</button>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+    </mat-dialog-content>
+</div>
+
+
+
+<!--Spend Dialog -->
+<div class="dialog-wrapper" *ngIf="data.type == '6'">
+    <div mat-dialog-title>
+        <span class="dialog-heading">Set Per Day Spend Limit</span>
+        <i mat-dialog-close class="bi bi-x-circle-fill primary-color"></i>
+    </div>
+    <mat-dialog-content class="mat-typography">
+        <form [formGroup]="bidSpendform">
+
+            <div class="row my-3">
+                <div class="col-12">
+                    <div class="custom-form-input mb-4">
+                        <label class="dialog-label mb-2">Enter Amount</label>
+                        <mat-form-field appearance="outline" class="w-100">
+                            <input matInput formControlName="amount" (keypress)="onKeyPress($event)" placeholder="KD" />
+                        </mat-form-field>
+                        <mat-error class="text-danger" *ngIf="e['amount'].invalid && submitted">
+                            <div *ngIf="e['amount'].errors?.['required']">Per day spend limit amount is required.</div>
+                        </mat-error>
+                    </div>
+
+                    <div class="text-center">
+                        <button mat-flat-button color="primary" (click)="placespentPerDay()" class="w-260" >Save</button>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+    </mat-dialog-content>
+</div>
+
+
+<!--Success Dialog -->
+<div class="dialog-wrapper" *ngIf="data.type == '7'">
+    <mat-dialog-content>
+        <div class="row ">
+            <div class="col-12">
+                <div class="success-wrapper">
+                    <div class="success text-center">
+                        <img src="./assets/images/done_gif.gif" class="mb-4" alt="">
+                        <h3 class="success-title">Bid Placed</h3>
+                        <p class="success-text">Bid has been placed <br> successfully</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-dialog-content>
+</div>
+
+<!--Success Dialog -->
+<div class="dialog-wrapper" *ngIf="data.type == '8'">
+    <mat-dialog-content>
+        <div class="row ">
+            <div class="col-12">
+
+                <div class="success-wrapper">
+
+                    <div class="success text-center">
+                        <img src="./assets/images/done_gif.gif" class="mb-4" alt="">
+                        <h3 class="success-title">Amount Updated!</h3>
+                        <p class="success-text" >Per Day Spend Limit has been <br> updated successfully</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-dialog-content>
+</div>
+
+
+<!--Stop Success Dialog -->
+<div class="dialog-wrapper" *ngIf="data.type == '9'">
+    <mat-dialog-content>
+        <div class="row ">
+            <div class="col-12">
+
+                <div class="success-wrapper">
+
+                    <div class="success text-center">
+                        <img src="./assets/images/done_gif.gif" class="mb-4" alt="">
+                        <h3 class="success-title">Bidding Stopped!!</h3>
+                        <p class="success-text">Bidding has been stopped successfully</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-dialog-content>
+</div>
+
+<!--Stop Success Dialog -->
+<div class="dialog-wrapper" *ngIf="data.type == '10'">
+    <mat-dialog-content>
+        <div class="row ">
+            <div class="col-12">
+
+                <div class="success-wrapper">
+
+                    <div class="success text-center">
+                        <img src="./assets/images/done_gif.gif" class="mb-4" alt="">
+                        <h3 class="success-title">Amount Added!!</h3>
+                        <p class="success-text">The amount has been added to your wallet successfully</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-dialog-content>
+</div>
+
+
+<!-- package add dialog -->
+
+<!-- package category dialog  -->
+<div class="dialog-wrapper" *ngIf="data.type == '11'">
+    <div mat-dialog-title>
+        <span class="dialog-heading" *ngIf="!data.catName">Create New</span>
+        <span class="dialog-heading" *ngIf="data.catName">Edit</span>
+        <i mat-dialog-close class="bi bi-x-circle-fill primary-color"></i>
+    </div>
+
+    <mat-dialog-content class="mat-typography">
+
+            <div class="row my-3">
+                <div class="col-12">
+                    <div class="custom-form-input mb-4">
+                        <label class="dialog-label mb-2">Enter Category Name</label>
+                        <mat-form-field appearance="outline" class="w-100">
+                            <input matInput  placeholder="Type Here" [(ngModel)]="categoryName"/>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="text-center">
+                        <button mat-flat-button color="primary" *ngIf="!data.catName" class="w-260" (click)="addCat()"
+                           >Create</button>
+                        <button mat-flat-button color="primary" *ngIf="data.catName" class="w-260" (click)="addCat()"
+                           >Update</button>
+                    </div>
+
+                </div>
+            </div>
+    </mat-dialog-content>
+</div>
+<!-- package category dialog end -->
+
+
+<!-- wallet add amount dialog start -->
+ 
+<div class="dialog-wrapper" *ngIf="data.type == '12'">
+    <div mat-dialog-title>
+        <span class="dialog-heading">Add Amount</span>
+        <i mat-dialog-close class="bi bi-x-circle-fill primary-color"></i>
+    </div>
+
+    <mat-dialog-content class="mat-typography">
+
+            <div class="row my-3">
+                <div class="col-12">
+                    <div class="custom-form-input mb-4">
+                        <label class="dialog-label mb-2">Enter Amount</label>
+                        <mat-form-field appearance="outline" class="w-100">
+                            <input matInput  placeholder="Type Here"/>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="text-center">
+                        <button mat-flat-button color="primary" class="w-260" mat-dialog-close
+                            >Continue</button>
+                    </div>
+
+                </div>
+            </div>
+    </mat-dialog-content>
+</div>
+<!-- wallet add amount dialog end -->

@@ -1,0 +1,167 @@
+<div class="dialog-wrapper" *ngIf="!data._id">
+  <div mat-dialog-title>
+    <span class="dialog-heading">View Ratings</span>
+    <i mat-dialog-close class="bi bi-x-circle-fill primary-color"></i>
+  </div>
+  <mat-dialog-content class="mat-typography">
+    <div class="row">
+      <div class="col-12">
+        <div
+          class="table-responsive"
+          style="border-bottom: 1px dashed gray; padding-bottom: 15px"
+        >
+          <table class="table star-table table-borderless mb-0">
+            <tbody>
+              <tr *ngFor="let i of data.itemRatings">
+                <th>
+                  <label>{{ i?.itemId?.name }}</label>
+                </th>
+
+                <td>
+                  <div class="like-dislike d-flex gap-2 justify-content-end">
+                    <ngx-star-rating
+                      [(ngModel)]="i.rating"
+                      [disabled]="true"
+                    ></ngx-star-rating>
+                  </div>
+                </td>
+              </tr>
+            <p style="border-bottom: 1px dashed gray;"></p>
+              <h3> Seller Rating</h3>
+              <tr>
+                <th>
+                  <label>{{ data?.supplementSellerId?.name }}</label>
+                </th>
+
+                <td>
+                  <div class="like-dislike d-flex gap-2 justify-content-end">
+                    <ngx-star-rating
+                      [(ngModel)]="data.sellerRating"
+                      [disabled]="true"
+                    ></ngx-star-rating>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="table-responsive mt-3">
+          <table class="table table-borderless mb-0">
+            <tbody>
+              <tr>
+                <td>
+                  <span class="span-head">Review</span>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <p>{{ data?.sellerReview }}</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </mat-dialog-content>
+  <!-- <mat-dialog-actions>
+        <div class="condition-wrapper">
+            <h6 class="card-subtitle tc" >Review</h6>
+            <div class="condition-text">
+              <p *ngFor="let item of ratingsData">
+                {{item?.review}}
+            </p>
+
+         
+            </div>
+          </div>
+        
+    </mat-dialog-actions> -->
+</div>
+
+
+
+<div class="dialog-wrapper" *ngIf="data._id">
+  <div mat-dialog-title>
+    <span class="dialog-heading">View Ratings</span>
+    <i mat-dialog-close class="bi bi-x-circle-fill primary-color"></i>
+  </div>
+  <mat-dialog-content class="mat-typography">
+    <div class="row">
+      <div class="col-12">
+        <div
+          class="table-responsive"
+          style="border-bottom: 1px dashed gray; padding-bottom: 15px"
+        >
+          <table class="table star-table table-borderless mb-0">
+            <tbody>
+              <tr *ngFor="let i of data.itemRatings">
+                <th>
+                  <label>{{ i?.itemId?.name }}</label>
+                </th>
+
+                <td>
+                  <div class="like-dislike d-flex gap-2 justify-content-end">
+                    <ngx-star-rating
+                      [(ngModel)]="i.rating"
+                      [disabled]="true"
+                    ></ngx-star-rating>
+                  </div>
+                </td>
+              </tr>
+            <p style="border-bottom: 1px dashed gray;"></p>
+              <h3> Seller Rating</h3>
+              <tr>
+                <th>
+                  <label>{{ data?.supplementSellerId?.name }}</label>
+                </th>
+
+                <td>
+                  <div class="like-dislike d-flex gap-2 justify-content-end">
+                    <ngx-star-rating
+                      [(ngModel)]="data.sellerRating"
+                      [disabled]="true"
+                    ></ngx-star-rating>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="table-responsive mt-3">
+          <table class="table table-borderless mb-0">
+            <tbody>
+              <tr>
+                <td>
+                  <span class="span-head">Review</span>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <p>{{ data?.sellerReview }}</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </mat-dialog-content>
+  <!-- <mat-dialog-actions>
+        <div class="condition-wrapper">
+            <h6 class="card-subtitle tc" >Review</h6>
+            <div class="condition-text">
+              <p *ngFor="let item of ratingsData">
+                {{item?.review}}
+            </p>
+
+         
+            </div>
+          </div>
+        
+    </mat-dialog-actions> -->
+</div>

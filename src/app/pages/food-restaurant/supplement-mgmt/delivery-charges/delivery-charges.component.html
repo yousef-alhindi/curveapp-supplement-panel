@@ -1,0 +1,40 @@
+<div class="dialog-wrapper">
+    <div mat-dialog-title>
+        <span class="dialog-heading">Delivery Charges</span>
+        <i mat-dialog-close class="bi bi-x-circle-fill primary-color"></i>
+    </div>
+    <mat-dialog-content class="mat-typography">
+        <div class="row">
+            <div class="col-lg-12 mb-3">
+                <div class="custom-form-input mb-2">
+                  <label class="label-form">Free Delivery</label>
+                  <mat-form-field appearance="outline" class="w-100">
+                    <input matInput placeholder="Type Here" [(ngModel)]="freeDelivery"/>
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="col-lg-12 mb-3">
+                <div class="custom-form-input mb-2">
+                  <label class="label-form">Delivery Charges</label>
+                  <mat-form-field appearance="outline" class="w-100">
+                    <input matInput placeholder="Type Here" [(ngModel)]="DeliveryCharges"/>
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="col-lg-8 mb-3">
+                <button class="w-100" mat-flat-button color="primary" (click)="addDel()">Save</button>
+             </div>
+
+            
+
+            
+
+            
+
+            
+        </div>
+        
+    </mat-dialog-content>
+</div>

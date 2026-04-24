@@ -1,0 +1,100 @@
+.btnfixed {
+    position: fixed;
+    right: 0px;
+    background: #fff;
+    width: 98%;
+    justify-content: end;
+    display: flex;
+    padding: 45px 0px 20px 0px;
+    margin-top: -60px;
+    left: 0;
+    z-index: 9;
+}
+
+.support-row{
+    margin-top: 150px;
+}
+
+.ticket{
+    top: 80px;
+    position: relative;
+}
+
+.ticket-wrapper {
+    background: #F5F5F5 0% 0% no-repeat padding-box;
+    /* background: #8b868679 0% 0% no-repeat padding-box; */
+
+    border-radius: 8px;
+    padding: 20px;
+    width: 100%;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+
+.ticket-txt {
+    word-break: break-all;
+    width: 100%;
+}
+
+.ticket-txt p {
+    font-size: 14px;
+    letter-spacing: 0px;
+    color: #6E6E6E;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+
+.ticket-txt p:last-child {
+    margin-bottom: 0;
+}
+
+
+.ticket-txt h6 {
+    font-weight: 600;
+    font-size: 18px;
+    letter-spacing: 0.6px;
+    color: #000000;
+    margin-bottom: 10px;
+    width: 80%;
+    word-break: break-word;
+}
+
+
+.ticket-icon {
+    width: 60px;
+    height: 60px;
+}
+
+.status-btn{
+    border-radius: 0px 8px;
+    width: 118px;
+    padding: 8px 10px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.success{
+    background: #037713 0% 0% no-repeat padding-box;
+}
+
+.danger{
+    background: #D85656 0% 0% no-repeat padding-box;
+}
+
+.warning{
+    background: #DEB308 0% 0% no-repeat padding-box;
+}
+
+
+.status-btn span {
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: 600 ;
+    letter-spacing: 0.48px;
+}

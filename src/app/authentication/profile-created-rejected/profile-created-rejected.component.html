@@ -1,0 +1,130 @@
+<!-- <div class="auth-panel" style="background-image: url('assets/images/bg.png');" >
+    <div class="container">
+
+        <div class="top-logo">
+            <img src="assets/images/curve_logo.png" alt="logo">
+        </div>
+
+        <div class="row align-items-center justify-content-center">
+
+            <div class="col-md-5">
+                <div class="login-card-profile ms-md-auto">
+
+
+                    <div class="card-content">
+                            <img src="assets/images/verification.png" alt="check">
+                            <h6>Your Business Profile has been created successfully!</h6>
+                            <p>Please be patience your profile is under the verification process</p>
+                    </div>
+
+
+
+                    <div class="auth-btn text-center mb-2">
+                        <button mat-flat-button class="w-100" color="primary" (click)="getRejected()">Okay</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+ -->
+
+
+
+<!-- Rejected card -->
+
+ <div class="auth-panel" style="background-image: url('assets/images/bg.png');"  *ngIf="restaurantDetails.restaurantStatus==2">
+    <div class="container">
+
+        <div class="top-logo">
+            <img src="assets/images/curve_logo.png" alt="logo">
+        </div>
+
+        <div class="row align-items-center justify-content-center">
+
+            <div class="col-md-5">
+                <div class="login-card-profile ms-md-auto">
+
+
+                    <div class="card-content">
+                            <img src="assets/images/profile_cancelled.png" alt="Rejected">
+                            <h6>Rejected!</h6>
+                            <p>Your Business Profile has been rejected due to invalid documents & bank details!</p>
+                    </div>
+
+
+
+                    <div class="auth-btn text-center mb-2">
+                        <button mat-flat-button class="w-100" color="primary" routerLink="/upload-documents">Retry!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
+
+
+
+
+
+<!-- congratulation card -->
+<div class="auth-panel" style="background-image: url('assets/images/bg.png');"  *ngIf="restaurantDetails?.isBankDetailsUpdated==true" >
+    <div class="container">
+
+        <div class="top-logo">
+            <img src="assets/images/curve_logo.png" alt="logo">
+        </div>
+
+        <div class="row align-items-center justify-content-center">
+
+            <div class="col-md-5">
+                <div class="login-card-profile ms-md-auto">
+
+
+                    <div class="card-content">
+                            <img src="assets/images/profile_created.png" alt="Congratulations">
+                            <h6>Congratulations!</h6>
+                            <p>Your Business Profile has been verified!</p>
+                    </div>
+
+
+
+                    <div class="auth-btn text-center mb-2">
+                        <button mat-flat-button class="w-100" color="primary" routerLink="/food/dashboard">Continue</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
+
+
+
+<div class="auth-panel" style="background-image: url('assets/images/bg.png');" *ngIf="restaurantDetails.restaurantStatus==2" >
+    <div class="container">
+
+        <div class="top-logo">
+            <img src="assets/images/curve_logo.png" alt="logo">
+        </div>
+
+        <div class="row align-items-center justify-content-center">
+
+            <div class="col-md-5">
+                <div class="login-card-profile ms-md-auto">
+
+
+                    <div class="card-content">
+                            <img src="assets/images/verification.png" alt="check">
+                            <h6>Please be patience your profile is under the verification process</h6>
+                    </div>
+
+
+
+                    <div class="auth-btn text-center mb-2">
+                        <button mat-flat-button class="w-100" color="primary" routerLink="/food/dashboard">Okay</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 

@@ -1,0 +1,30 @@
+.link{
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.rating-label{
+    font-size:18px;
+    color: #AAAAAA;
+}
+
+.rating-text{
+    font-size:38px;
+    font-weight: bold;
+    color: #242424;
+}
+
+
+
+.order-wrap {
+    background: #f7f7f7 0% 0% no-repeat padding-box;
+  }
+  
+  .order-wrap h3 {
+    text-align: center;
+    font-weight: bold;
+    font-size: 28px;
+    padding: 18px;
+    color: #353535;
+    margin: 20px 0px;
+  }

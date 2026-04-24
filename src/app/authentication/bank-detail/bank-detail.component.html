@@ -1,0 +1,107 @@
+
+<div class="container">
+    <div class="top-logo">
+      <img src="assets/images/curve_logo.png" alt="logo" />
+    </div>
+  </div>
+
+<div class="auth-panel" style="background-image: url('assets/images/bg.png');">
+    <div class="container">
+   
+
+        <div class="row align-items-center justify-content-center">
+
+            <div class="col-md-9">
+                <div class="login-card-profile ms-md-auto">
+
+                    <div class="back-btn" routerLink="/upload-documents">
+                        <i class="bi bi-chevron-left"></i>
+                    </div>
+
+                    <div class="log-top-txt">
+
+                        <div class="text-center">
+                            <h4 class="mt-3">Add Bank Details</h4>
+                        </div>
+
+                    </div>
+
+                    <form [formGroup]="BankDetailsForm">
+                        <div class="row business-row">
+
+                            <div class="col-md-6 ">
+                                <div class="custom-input mb-4 me-3">
+                                    <label class="auth-label">Bank Account Number</label>
+                                    <mat-form-field appearance="outline" class="w-100">
+                                        <input onkeypress="return event.charCode > 47 && event.charCode < 58;" matInput placeholder="Bank Account Number"
+                                            formControlName="bankAccountNo" />
+                                    </mat-form-field>
+                                    <div
+                                    *ngIf="commonFunctionForError('bankAccountNo')"
+                                    class="text-danger"
+                                  >
+                                  *Bank Account Number is required 
+                                  </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="custom-input mb-4 ms-3">
+                                    <label class="auth-label">Account Holder Name</label>
+                                    <mat-form-field appearance="outline" class="w-100">
+                                        <input matInput placeholder="Account Holder Name"
+                                            formControlName="accHolderName"  onkeypress="return event.target.selectionStart === 0 ? event.key !== ' ' : true;"  />
+                                    </mat-form-field>
+                                    <div
+                                    *ngIf="commonFunctionForError('accHolderName')"
+                                    class="text-danger"
+                                  >
+                                  *Account Holder Name  is required
+                                  </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="custom-input me-3 mb-4">
+                                    <label class="auth-label">Bank Code</label>
+                                    <mat-form-field appearance="outline" class="w-100">
+                                        <input matInput placeholder="Bank Code" formControlName="bankCode"  onkeypress="return event.target.selectionStart === 0 ? event.key !== ' ' : true;"  />
+                                    </mat-form-field>
+                                    <div
+                                    *ngIf="commonFunctionForError('bankCode')"
+                                    class="text-danger"
+                                  >
+                                  *Bank Code is required 
+                                  </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="custom-input ms-3 mb-4">
+                                    <label class="auth-label">Bank Name</label>
+                                    <mat-form-field appearance="outline" class="w-100">
+                                        <input matInput placeholder="Bank Name" formControlName="bankName"    onkeypress="return event.target.selectionStart === 0 ? event.key !== ' ' : true;" />
+                                    </mat-form-field>
+                                    <div
+                                    *ngIf="commonFunctionForError('bankName')"
+                                    class="text-danger"
+                                  >
+                                  *Bank Name is required
+                                  </div>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                    </form>
+
+                    <div class="auth-btn text-center mt-3 mb-2">
+                        <button mat-flat-button class="w-50" 
+                            color="primary" (click)="addBankdetails()">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

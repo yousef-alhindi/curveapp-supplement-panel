@@ -1,0 +1,42 @@
+.contact-card{
+    background: transparent linear-gradient(108deg, #33BD8C 0%, #1D815D 100%) 0% 0% no-repeat padding-box;
+    border: 1px solid #33BD8C;
+    border-radius: 12px;
+    padding: 28px 15px ;
+    margin-top: 15px;
+    width: 100%;
+}
+
+
+.contact-txt p{
+    font-size:  14px;
+    font-weight: normal;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+}
+
+
+
+
+.contact-txt h5{
+    font-size:  18px;
+    font-weight: 500;
+    color: #FFFFFF;
+    margin-bottom: 0;
+}
+
+
+.contact-txt{
+    width: 100%;
+    word-break: break-word;
+}
+
+.contact-icon i{
+    font-size: 22px;
+    vertical-align: 0px!important;
+    color: #ffffff;
+}
+
+.bi::before{
+    vertical-align: 0px!important;
+}

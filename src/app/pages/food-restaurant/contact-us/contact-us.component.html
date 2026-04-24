@@ -1,0 +1,41 @@
+<div class="row">
+    <div class=" col-lg-10 col-xl-7">
+        <div class="cms-wrapper">
+            <!-- <p>{{ContactList?.description}}</p> -->
+            <p>
+                We’re here to help! Whether you have questions, need support, or just want to say hello, don’t hesitate to reach out. Here’s how you can contact us:
+            </p>            
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="contact-card d-flex gap-3 align-items-stretch">
+                        <div class="contact-icon">
+                            <i class="bi bi-envelope-fill"></i>
+                        </div>
+
+                        <div class="contact-txt">
+                            <p>Support Email Address</p>
+                            <h5>{{ContactList?.contactDetail?.email}}</h5>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-6 align-items-stretch d-flex align-items-stretch">
+                    <div class="contact-card d-flex gap-3 ">
+                        <div class="contact-icon">
+                            <i class="bi bi-telephone-fill"></i>
+                        </div>
+
+                        <div class="contact-txt">
+                            <p>Support Contact Number</p>
+                            <h5>{{ContactList?.contactDetail?.phoneNumber}}</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+        
+        </div>
+    </div>
+</div>

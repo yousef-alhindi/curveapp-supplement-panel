@@ -1,0 +1,68 @@
+<div class="dialog-wrapper">
+    <div mat-dialog-title>
+        <span class="dialog-heading">Select Payment Method</span>
+        <i mat-dialog-close class="bi bi-x-circle-fill primary-color"></i>
+    </div>
+    <mat-dialog-content class="mat-typography">
+        <div class="row my-3">
+            <div class="col-12">
+                <div class="payment-wrapper">
+                    <div class="pay-mode d-flex justify-content-between align-items-center"
+                        [ngClass]="{'selected-border': selectedPaymentType === 1}">
+                        <div class="payment-content d-flex align-items-center gap-3">
+                            <img src="assets/images/visa_pay.png" alt="visa" />
+                            <h5>Card (Credit/Debit)</h5>
+                        </div>
+
+                        <div class="payment-radio">
+                            <mat-radio-button value="1" [checked]="selectedPaymentType === 1"
+                                (change)="onPaymentTypeChange(1)">
+                            </mat-radio-button>
+                        </div>
+                    </div>
+
+                    <div class="pay-mode pay d-flex justify-content-between align-items-center"
+                        [ngClass]="{'selected-border': selectedPaymentType === 2}">
+                        <div class="payment-content d-flex align-items-center gap-3">
+                            <img src="assets/images/apple_pay.png" alt="apple_pay" />
+                            <h5>Apple Pay</h5>
+                        </div>
+
+                        <div class="payment-radio">
+                            <mat-radio-button value="2" [checked]="selectedPaymentType === 2"
+                                (change)="onPaymentTypeChange(2)">
+                            </mat-radio-button>
+                        </div>
+                    </div>
+
+                    <div class="use-cred pay-mode pay d-flex justify-content-between align-items-center"
+                        *ngIf="!isWalletAmount">
+                        <div class="payment-content d-flex align-items-center gap-2">
+                            <p>Use My Credits -</p>
+                            <h5 class="text-success">{{walletAmount || "0"}} KD</h5>
+                        </div>
+
+                        <div>
+                            <mat-slide-toggle (change)="onSelectCheckBox(!isWalletSelected)"></mat-slide-toggle>
+                        </div>
+                    </div>
+
+                    <div class="pay-mode total-pay d-md-flex justify-content-between align-items-center">
+                        <div class="payment-content">
+                            <p class="total">Total Pay</p>
+                            <h5 *ngIf="isWalletAmount != 0">{{ isWalletAmount }} KD</h5>
+                            <h5 *ngIf="isWalletAmount == 0">{{ data?.item?.joinFee }} KD</h5>
+                        </div>
+
+                        <div class="">
+                            <button mat-flat-button color="primary" (click)="successDialog('500ms', '500ms')"
+                                class="w-240">
+                                CHECKOUT
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-dialog-content>
+</div>

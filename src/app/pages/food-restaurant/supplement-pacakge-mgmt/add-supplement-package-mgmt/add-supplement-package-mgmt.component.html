@@ -1,0 +1,232 @@
+<div class="row">
+    <div class="col-xl-8">
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <h4 class="card-title">
+              <i class="bi bi-arrow-left-short" routerLink="/supplement/supplement-pacakge-mgmt/"></i>
+              <span *ngIf="editData">Edit Supplement </span>
+              <span *ngIf="!editData">Add Supplement </span>
+            </h4>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-form">
+            <form [formGroup]="addSuppForm">
+            <div class="row">
+
+              <div class="col-lg-6 mx-auto  mb-4 text-center">
+                <label class="label-form">Upload Image</label>
+                <div class="me-3 upload_image">
+                  <label class="hoverable hoverable1">
+                    <img  *ngIf="url && !fileIsPdfOrNotForLicense"
+                    [src]="url"
+                    alt="Uploaded Image"
+                  />
+                  <a *ngIf="fileIsPdfOrNotForLicense && url && profileImage" [href]="profileImage" target="_blank">
+
+                    <img *ngIf="fileIsPdfOrNotForLicense && url"
+                    src='assets/images/pdf_image.png' alt="pdf"
+                    />
+                  </a>
+                    
+                    <div 
+                      class="hover-text mt-0 text-center d-block text-highlight"
+                    >
+                      <!-- <i class="bi bi-upload"></i> -->
+                       <label for="fileInput1">
+                         <img class="upload-icon"
+                           src="assets/images/upload_document.png"
+                           alt="upload"
+                         />
+                       </label>
+                      <p class="mb-0" *ngIf="!url">Click to Upload</p>
+                    </div>
+                  </label>
+                  <br />
+                  <input
+                  style="display: none;"
+                    id="fileInput1"
+                    type="file"
+                    (change)="onSelectFile($event)"
+                    accept="image/png, image/jpeg, application/pdf"
+                    formControlName = "image"
+                  />
+                </div>
+                <mat-error class="text-danger" *ngIf="submitted && f['image'].errors">
+                  <span *ngIf="submitted && f['image'].errors['required']">*Please
+                      Select Image
+                  </span>
+              </mat-error>
+                
+              </div>
+
+                <div class="col-lg-12 mb-2">
+                    <div class="custom-form-input mb-2">
+                      <label class="label-form">Package Name</label>
+                      <mat-form-field appearance="outline" class="w-100">
+                        <input matInput placeholder="Type Here" formControlName="name"
+                           />
+                      </mat-form-field>
+                      <mat-error class="text-danger" *ngIf="submitted && f['name'].errors">
+                        <span *ngIf="submitted && f['name'].errors['required']">*Please
+                            Select Package Name
+                        </span>
+                    </mat-error>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-12 mb-2">
+                    <div class="custom-form-input mb-2">
+                      <label class="label-form">Package Price</label>
+                      <mat-form-field appearance="outline" class="w-100">
+                        <input matInput placeholder="Type Here" formControlName="price"
+                           />
+                      </mat-form-field>
+                      <mat-error class="text-danger" *ngIf="submitted && f['price'].errors">
+                        <span *ngIf="submitted && f['price'].errors['required']">*Please
+                            Select Price
+                        </span>
+                    </mat-error>
+                    </div>
+                  </div>
+  
+                <div class="col-12 mb-2">
+                  <div class="custom-form-input mb-2">
+                    <label class="label-form">Gender</label>
+                    <mat-form-field appearance="outline" class="w-100">
+                      <mat-select placeholder="Select type" formControlName="gender">
+                        <mat-option value='unisex'>Unisex</mat-option>
+                        <mat-option value='men'>Male</mat-option>
+                        <mat-option value='women'>FeMale</mat-option>
+
+                      </mat-select>
+                    </mat-form-field>
+                    <mat-error class="text-danger" *ngIf="submitted && f['gender'].errors">
+                      <span *ngIf="submitted && f['gender'].errors['required']">*Please
+                          Select Gender
+                      </span>
+                  </mat-error>
+                  </div>
+                </div>
+
+                <div class="col-12 mb-2">
+                  <div class="custom-form-input mb-2">
+                    <label class="label-form">Select Type</label>
+                    <mat-form-field appearance="outline" class="w-100">
+                      <mat-select placeholder="Select type" formControlName="type" (selectionChange)="onTypeChange($event)">
+                        <mat-option value='Weight Gain'>Weight Gain</mat-option>
+                        <mat-option value='Weight Loss'>Weight Loss</mat-option>
+                    
+
+                      </mat-select>
+                    </mat-form-field>
+                    <mat-error class="text-danger" *ngIf="submitted && f['type'].errors">
+                      <span *ngIf="submitted && f['type'].errors['required']">*Please
+                          Select Type
+                      </span>
+                  </mat-error>
+                  </div>
+                </div>
+
+                <!-- <div class="col-12 mb-2">
+
+                <div class="custom-form-input mb-2">
+                  <mat-form-field appearance="outline" class="w-100">
+                    <mat-select placeholder="Add Product">
+                      <mat-option value=1 (click)="product('500ms','500ms')">
+                        <div class="d-flex justify-content-between"> 
+                          <div class="d-flex gap-2 align-items-center">
+                            <div class="product-img">
+                              <img src="assets/images/product-3.png" alt="">
+                            </div>
+                            Product 1 - KWD 300
+                          </div> 
+
+                          <div class="d-block">
+                            <mat-checkbox class="example-margin"></mat-checkbox>
+                          </div>
+                        </div>
+                      </mat-option>
+
+                      <mat-option value='2'>
+                        <div class="d-flex justify-content-between"> 
+                          <div class="d-flex gap-2 align-items-center">
+                            <div class="product-img">
+                              <img src="assets/images/product-3.png" alt="">
+                            </div>
+                            Product 1 - KWD 300
+                          </div> 
+
+                          <div class="d-block">
+                            <mat-checkbox class="example-margin"></mat-checkbox>
+                          </div>
+                        </div>
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                 
+                </div>
+                </div> -->
+
+
+                <!-- <div class="product-img">
+                  <img src="assets/images/product-3.png" alt="">
+                </div> -->
+
+                <div class="col-12 mb-2">
+                  <div class="custom-form-input mb-2">
+                    <label class="label-form">Supplement Name</label>
+                  <ng-multiselect-dropdown
+                      [placeholder]="'Products'"
+                      [settings]="dropdownSettings"
+                      [data]="supplement"
+                      (onSelect)="onItemSelect($event)"
+                      formControlName="products"
+                      (onDeSelect)="onItemDeselect($event)"
+                    >
+                    </ng-multiselect-dropdown>
+                    <mat-error class="text-danger" *ngIf="submitted && f['products'].errors">
+                      <span *ngIf="submitted && f['products'].errors['required']">*Please
+                          Select Products with Size
+                      </span>
+                  </mat-error>
+                  </div>
+                </div>
+
+                <!-- (click)="product('500ms','500ms')" -->
+  
+                <div class="col-lg-12 mb-2">
+                  <div class="custom-form-input custom-textarea mb-2">
+                    <label class="label-form">Description</label>
+                    <mat-form-field appearance="outline" class="w-100">
+                      <textarea matInput rows="6" formControlName="description"></textarea>
+                    </mat-form-field>
+                    <mat-error class="text-danger" *ngIf="submitted && f['description'].errors">
+                      <span *ngIf="submitted && f['description'].errors['required']">*Please
+                          Select Description
+                      </span>
+                  </mat-error>
+                  </div>
+                </div>
+
+
+              
+  
+              
+                <div class="col-lg-6 text-center">
+                  <button *ngIf="editData" class="w-100" color="primary" mat-flat-button (click)="submit2()">
+                   Update
+                  </button>
+                  <button *ngIf="!editData" class="w-100" color="primary" mat-flat-button (click)="submit()">
+                   Create
+                  </button>
+                </div>
+              </div>
+              
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

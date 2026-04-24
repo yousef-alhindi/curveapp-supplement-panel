@@ -1,0 +1,336 @@
+<div class="page-wrapper">
+
+    <div class="row">
+
+        <div class="col-xl-8">
+            <div class="heading-section d-md-flex justify-content-between align-items-center">
+                <div class="heading-txt">
+                    <h3 class="head">Hi {{dashboardData2?.restaurant?.ownerName}}!</h3>
+                    <!-- <p class="sub-head mb-0">Lorem ipsum dolor sit amet</p> -->
+                </div>
+
+                <div class="head-btn">
+                    <button routerLink="/supplement/wallet-mgmt" mat-flat-button color="primary"> <img
+                            src="assets/images/wallet.png" alt="wallet" height="20px" width="25px" class="me-2">
+                        <strong> KWD {{dashboardData2?.walletBalance}}</strong> </button>
+                </div>
+            </div>
+
+
+
+            <div class="block-wrapper d-md-flex">
+                <div class="m-3 ">
+                    <label>Delivery</label>
+                    <mat-slide-toggle class="ms-2" [checked]="selectedfilter1"
+                        (change)="serviceFilter1($event.checked)"></mat-slide-toggle>
+                </div>
+
+
+                <div class="m-3">
+                    <label>Take Away</label>
+                    <mat-slide-toggle class="ms-2" [checked]="selectedfilter2"
+                        (change)="serviceFilter2($event.checked)"></mat-slide-toggle>
+                </div>
+
+                <!-- <div class="m-3">
+                    <label>Availability Status</label>
+                    <mat-slide-toggle class="ms-2" [checked]="selectedfilter3"
+                        (change)="serviceFilter3($event.checked)"></mat-slide-toggle>
+                </div> -->
+
+
+
+            </div>
+
+
+
+<div class="col-12">
+    <div class="row align-items-center mt-4">
+        <div class="col-12">
+            <div class="row business-row m-1 p-2">
+                <div class="col-12 my-2">
+                    <h3 class="business">History</h3>
+                </div>
+                <div class="col-xxl-9 d-lg-flex align-items-center gap-3 mb-3">
+                    <form [formGroup]="dateForm" class="w-100 gap-3 flex-wrap d-md-flex align-items-center">
+                        <label class="date-label">From</label>
+                        <div class="custom-date date-w">
+                          <mat-form-field appearance="outline">
+                            <input matInput placeholder="DD/MM/YYYY" [matDatepicker]="picker"
+                                   formControlName="fromDate" (dateChange)="onFromDateChange($event)">
+                            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                          </mat-form-field>
+                        </div>
+                      
+                        <label class="date-label">To</label>
+                        <div class="custom-date date-w">
+                          <mat-form-field appearance="outline">
+                            <input matInput placeholder="DD/MM/YYYY" [matDatepicker]="picker2" 
+                                   [min]="minEndDate" formControlName="toDate">
+                            <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+                            <mat-datepicker #picker2></mat-datepicker>
+                          </mat-form-field>
+                        </div>
+                      
+                        <button mat-flat-button color="primary" class="w-60" (click)="onDateFilter()">Apply</button>
+                        <button mat-flat-button color="primary" class="w-60" (click)="reset()">Reset</button>
+                      </form>
+                      
+                </div>
+
+
+                <div class="col-xxl-3 mb-3 d">
+                    <div class="custom-form-input select-mat">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-select disableRipple placeholder="Order Type"
+                                (selectionChange)="serviceFilter($event.value)" [(ngModel)]="selectedfilter">
+                                <mat-option value="today">Today</mat-option>
+                                <mat-option value="week">This Week</mat-option>
+                                <mat-option value="month">This Month</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+              
+
+                <div class="col-md-6 col-lg-3 mb-4 d-flex align-items-stretch my-2">
+
+                    <div class="card card-1">
+                        <div class="card-body">
+                            <div>
+                                <div class="dash-icon">
+                                    <!-- <i class="bi bi-person-fill-check"></i> -->
+                                    <img src="assets/images/package_bookings.png" alt="package_bookings">
+                                </div>
+                            </div>
+                            <div class="justify-content-center d-flex mt-3 flex-column">
+                                <h5 class="card-title">{{dashboardData?.orderCount}}</h5>
+                                <p class="card-text ">Order Count</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3 mb-4 d-flex align-items-stretch my-2">
+                    <div class="card card-2">
+                        <div class="card-body">
+                            <div>
+                                <div class="dash-icon">
+                                    <img src="assets/images/repeat_customers.png" alt="repeat_customers">
+                                </div>
+                            </div>
+                            <div class="justify-content-center d-flex mt-3 flex-column">
+                                <h5 class="card-title">{{dashboardData?.repeatCustomers}}</h5>
+                                <p class="card-text ">Repeat Customers</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-6 col-lg-3 mb-4 d-flex align-items-stretch my-2">
+                    <div class="card card-3">
+                        <div class="card-body">
+                            <div>
+                                <div class="dash-icon">
+                                    <!-- <i class="bi bi-person-fill-check"></i> -->
+                                    <img src="assets/images/new_customers.png" alt="customers">
+                                </div>
+                            </div>
+                            <div class="justify-content-center d-flex mt-3 flex-column">
+                                <h5 class="card-title">{{dashboardData?.newCustomer}}</h5>
+                                <p class="card-text ">New Customers</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-6 col-lg-3 mb-4 d-flex align-items-stretch my-2">
+                    <div class="card card-4">
+                        <div class="card-body">
+                            <div>
+                                <div class="dash-icon">
+                                    <img src="assets/images/revenue_generated.png" alt="revenue">
+                                </div>
+                            </div>
+                            <div class="justify-content-center d-flex mt-3 flex-column">
+                                <h5 class="card-title">KWD {{dashboardData?.totalRevenue}}</h5>
+                                <p class="card-text">Revenue Generated</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+      
+
+        <div class="col-12 ">
+
+            <div class="row mt-5">
+                <div class=" col-lg-6 mb-4 d-flex align-items-stretch">
+                    <div class="card card-5">
+                        <div class="card-body ">
+                            <div class="justify-content-between align-items-center d-flex gap-3">
+                                <div>
+                                    <div class="dash-icon">
+                                        <img src="/assets/images/Supplement_ics/PNG/supplement_ic.png" alt="dishes">
+                                    </div>
+                                </div>
+                                <div class="justify-content-center d-flex flex-column">
+                                    <h5 class="card-title">{{dashboardData2?.totalProducts}} </h5>
+                                </div>
+                            </div>
+
+                            <p class="card-text mt-3 mb-4">Total Number of Dishes</p>
+                        </div>
+                        <img src="/assets/images/Supplement_ics/PNG/supplement_bg_ic.png" class="bg-trans" alt="dishes_trans">
+                    </div>
+                </div>
+
+                <div class=" col-lg-6 mb-4 d-flex align-items-stretch">
+                    <div class="card card-6">
+                        <div class="card-body ">
+                            <div class="justify-content-between align-items-center d-flex gap-3">
+                                <div>
+                                    <div class="dash-icon">
+                                        <img src="assets/images/average_rating.png" alt="average_rating">
+                                    </div>
+                                </div>
+                                <div class="justify-content-center d-flex flex-column">
+                                    <h5 class="card-title">{{dashboardData2?.averageRating | number:'1.1-1'}}</h5>
+                                </div>
+                            </div>
+                            <p class="card-text mt-3 mb-4">Average Rating</p>
+                        </div>
+                        <img src="assets/images/average_rating_trans.png" class="bg-trans"
+                            alt="average_rating_trans">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+</div>
+           
+
+
+
+
+        </div>
+
+
+        <div class="col-xl-4 px-lg-5 ">
+            <div class="heading-section d-flex justify-content-between align-items-center">
+                <div class="heading-txt">
+                    <h3 class="business">My Profile</h3>
+                </div>
+
+                <div class="head-btn  ">
+                    <img routerLink="/supplement/my-profile" src="assets/images/edit_profile.png" alt="edit">
+                </div>
+            </div>
+
+
+            <div class="profile ">
+                <div class="profile-img">
+                    <img [src]="resturantDetails?.addressDetails?.supLogo
+ ? resturantDetails?.addressDetails?.supLogo
+ : 'assets/images/placeholder.jpg'" alt="profile">
+                </div>
+
+                <div class="profile-detail mt-3">
+                    <h6 class="name">{{resturantDetails?.ownerName}}</h6>
+                    <p class="hotel">{{resturantDetails?.name}}</p>
+
+
+                </div>
+
+
+                <div class="restaurant-detail">
+                    <!-- <h6 class="name">Restaurant Category</h6> -->
+                    <div class="d-flex flex-wrap justify-content-center gap-2">
+                        <p class="mb-0">+{{resturantDetails?.countryCode}}{{resturantDetails.mobileNumber
+                            }}</p>
+                        <p class="mb-0">{{resturantDetails.email
+                            }}</p>
+                    </div>
+                </div>
+
+
+
+
+                <!-- <div class="time mt-3">
+                <h6 class="name">Opening / Closing Days & Timing</h6>
+                <p class="d-flex gap-3"> <span class="text-dark">{{weekdaysRange}}</span>  {{dashboardData2?.restaurant?.documents?.openingTime | date :'hh:mm a'}} - {{dashboardData2?.restaurant?.documents?.closingTime | date :'hh:mm a'}}</p>
+            </div> -->
+
+                <hr>
+
+
+                <div class="time ">
+                    <h6 class="name">Address/Location</h6>
+                    <p class=""> {{resturantDetails?.addressDetails?.address}}</p>
+                </div>
+
+
+
+                <div class="location-map" *ngIf="initializeLocation('')">
+                    <agm-map style="width: 100%; height: 100%;border-radius: 12px;" [zoom]="6" [latitude]="lattt"
+                        [longitude]="longgg">
+                        <agm-marker [latitude]="lattt" [longitude]="longgg"></agm-marker>
+                    </agm-map>
+                </div>
+
+                <div class="detail-card">
+                    <div class="card mt-3 p-3">
+                        <div class="heading-section d-flex justify-content-between align-items-center">
+
+                            <h6>Bank Details</h6>
+                            <div class="head-btn  ">
+                                <img routerLink="/gym/my-profile" src="assets/images/edit_profile.png" alt="edit">
+                            </div>
+                        </div>
+
+
+                        <table class="table mb-3 w-100 my-4">
+                            <tr>
+                                <td class="left">Account Number</td>
+                                <td>84747074082</td>
+
+                            </tr>
+                            <tr>
+                                <td class="left">Bank Name</td>
+                                <td>IDFC Bank</td>
+
+                            </tr>
+                            <tr>
+                                <td class="left pb-4">Bank Code</td>
+                                <td class="pb-4" >IDFC0003838</td>
+                            </tr>
+
+                        </table>
+                        <div class="div">
+                            <h6>Account Holder Name</h6>
+                            <p>Srishti</p>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+
+
+        </div>
+
+    </div>
+</div>

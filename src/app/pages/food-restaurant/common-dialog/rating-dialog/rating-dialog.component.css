@@ -1,0 +1,93 @@
+
+label{
+    font-size:18px;
+    font-weight: bold;
+    letter-spacing: 0.6px;
+    color: #000000;
+    margin-bottom: 0px;
+}
+
+
+
+.condition-wrapper{
+    background: #F7F7F7 0% 0% no-repeat padding-box;
+    padding:20px 40px;
+    width: 100%;
+}
+
+
+table tr th{
+    width: 30%;
+    padding:10px 0px ;
+    vertical-align: middle;
+    
+}
+
+table tr td{
+    width: 70%;
+    padding:10px 0px ;
+
+}
+
+
+table tr td:nth-child(2){
+    text-align: right;
+}
+
+
+
+
+.tc{
+    margin-bottom: 16px;
+    font-size:16px;
+    font-weight: 600;
+    letter-spacing: 0.6px;
+    color: #000000;
+}
+
+.condition-text p{
+    text-align: left;
+    font-size: 14px;
+    font-weight: normal;
+    color: #6E6E6E;
+    /* margin-bottom: 0; */
+}
+
+.condition-text p:last-child{
+    margin-bottom: 0px;
+}
+
+
+.condition-text{
+    min-height: auto;
+    max-height: 100px;
+    overflow-y: auto;
+}
+
+.rest-head{
+    font-size: 22px;
+    font-weight: bold;
+}
+
+/* Styles for thumbs-up when active (rating is 'like') */
+.like-dislike .fa {
+    font-size: 22px;
+  }
+  
+  .like-dislike .fa-thumbs-up.active {
+    color: var(--primary-color);
+  }
+  
+  /* Styles for thumbs-down when active (rating is 'unlike') */
+  .like-dislike .fa-thumbs-down.active {
+    color: var(--primary-color); /* Adjust color for 'unlike' if necessary */
+  }
+  
+  /* Default thumbs-down color */
+  /* .like-dislike .fa-thumbs-down {
+    color: gray !important;
+  }
+  .like-dislike .fa-thumbs-up {
+    color: gray !important;
+  } */
+  

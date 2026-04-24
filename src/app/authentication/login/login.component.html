@@ -1,0 +1,179 @@
+<div class="container">
+  <div class="top-logo">
+    <img src="assets/images/curve_logo.png" alt="logo" />
+  </div>
+</div>
+
+
+<div
+  class="auth-panel"
+  style="background-image: url('assets/images/bg.png')"
+>
+  <div class="container">
+    
+    <form [formGroup]="loginForm">
+      <div class="row">
+        <div class="col-md-6 d-flex align-items-center">
+          <div class="auth-content">
+            <h3 class="green-txt">
+              Partner with <span class="bold-green"> Curve! </span>
+            </h3>
+            <h4 class="banner-txt">
+              Increase Your <br />
+              Online Reaches
+            </h4>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="login-card ms-md-auto">
+            <div class="log-top-txt">
+              <h3>Choose Business Type</h3>
+              <div class="custom-radio mb-4">
+                <table class="table table-borderless">
+                  <tbody>
+                    <!-- <mat-radio-group (change)="onSelectionChange($event)"> -->
+                    <tr>
+                      <td>
+                        
+                        <mat-radio-group (change)="onSelectionChange($event)" >
+                          <mat-radio-button value="supplement" selected checked>
+                            Supplement Store</mat-radio-button
+                          >
+                        </mat-radio-group>
+                        
+
+                        
+                        
+                      </td>
+
+                      <td>
+                        <mat-radio-group (change)="onSelectionChange($event)">
+                          <mat-radio-button value="grocery">
+                            Grocery</mat-radio-button
+                          >
+                        </mat-radio-group>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        
+                        <mat-radio-group (change)="onSelectionChange($event)">
+                          <mat-radio-button value="gym">
+                            Gym</mat-radio-button
+                          >
+                        </mat-radio-group>
+                 
+                      </td>
+
+                      <td>
+                     
+                        <mat-radio-group (change)="onSelectionChange($event)">
+                          <mat-radio-button value="restaurant">
+                            Restaurant</mat-radio-button
+                          >
+                        </mat-radio-group>
+                        </td>
+                      </tr>
+                    <!-- </mat-radio-group> -->
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="text-center">
+                <h4>Sign in/Sign Up</h4>
+                <p *ngIf="checkPhone">Continue with your mobile number</p>
+                <p *ngIf="!checkPhone">Continue with your email</p>
+
+              </div>
+
+            </div>
+
+            <!-- <h3>Choose Business Type</h3> -->
+            <div class="custom-radio mb-4">
+              <mat-radio-group formControlName="contactMethod" class="d-flex justify-content-evenly" aria-label="Select an option">
+                <mat-radio-button (click)="checkEmailAndPhone($event)" [value]="1">Mobile</mat-radio-button>
+                <mat-radio-button (click)="checkEmailAndPhone($event)" [value]="2">Email</mat-radio-button>
+              </mat-radio-group>
+            </div>
+
+            <div *ngIf="checkPhone && !checkEmail" class="custom-input mb-4" >
+              <label class="auth-label" >Mobile Number</label>
+              <mat-form-field appearance="outline" class="w-100">
+                <input
+                  matInput
+                  onkeypress="return event.charCode > 47 && event.charCode < 58;"
+                  placeholder="Enter Mobile Number"
+                  formControlName="mobileNumber"
+                  minlength="7"
+                  maxlength="15"
+               
+                  
+                 
+                />
+                <span class="text-white  dialcode-title" matTextPrefix>+965</span>
+              </mat-form-field>
+              <mat-error class="text-danger" *ngIf="submitted && f['mobileNumber'].errors">
+                      
+                <span *ngIf="f['mobileNumber'].errors['required']">*Mobile Number is required </span>
+
+              <span *ngIf="f['mobileNumber'].hasError('minlength')">*Mobile Number should be of 7 digits long</span>
+
+
+            </mat-error>
+
+
+            </div>
+            <div *ngIf="!checkPhone && checkEmail" class="custom-input mb-4">
+              <label class="auth-label" >Email</label>
+              <mat-form-field appearance="outline" class="w-100">
+                <input
+                  matInput
+                  placeholder="Enter Email"
+                  formControlName="email"
+                   onkeypress="return event.target.selectionStart === 0 ? event.key !== ' ' : true;" 
+                />
+              </mat-form-field>
+              
+              <mat-error class="text-danger" *ngIf="submitted && f['email'].errors">
+                      
+                <span *ngIf="f['email'].errors['required']">*Email is required </span>
+                <span  *ngIf="f['email'].errors['email']">Email must be a valid email address</span>
+
+            </mat-error>
+
+            </div>
+
+          
+            <div class="check-margin">
+            <div class="checkbox">
+              <mat-checkbox
+                class="example-margin"  
+                (change)="toggleSelection($event)"
+                >Accept Terms & Conditions</mat-checkbox
+              >
+            </div>
+            <!-- <div class="text-danger">{{ checkedMessage }}</div> -->
+            </div>
+
+            <div class="auth-btn">
+              <button
+                mat-flat-button
+                class="w-100"
+                color="primary"
+                (click)="loginCredential()"
+              >
+                Continue
+              </button>
+            </div>
+
+            <!-- <div class="mt-3">
+                        <p class="small-txt">Create An Account</p>
+                    </div> -->
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

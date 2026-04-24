@@ -1,0 +1,242 @@
+<div class="container">
+  <div class="top-logo">
+    <img src="assets/images/curve_logo.png" alt="logo" />
+  </div>
+</div>
+
+<div class="auth-panel" style="background-image: url('assets/images/bg.png')">
+  <div class="container">
+  
+
+    <div class="row align-items-center justify-content-center">
+      <div class="col-md-9">
+        <div class="login-card-profile ms-md-auto">
+          <div class="back-btn" routerLink="/add-restaurant-location">
+            <i class="bi bi-chevron-left"></i>
+          </div>
+
+          <div class="log-top-txt">
+            <div class="text-center">
+              <h4 class="mt-3">Upload Documents</h4>
+            </div>
+          </div>
+          <form [formGroup]="addResturantDocumentsForm">
+            <div class="row business-row">
+             
+              <div class="col-md-6 mb-4">
+                <label class="auth-label">Shop License</label>
+                <div class="me-3 upload_image">
+                  <label class="hoverable hoverable1">
+                    <img  *ngIf="url && !fileIsPdfOrNotForLicense"
+                    [src]="url"
+                    alt="Uploaded Image"
+                  />
+                  <a *ngIf="fileIsPdfOrNotForLicense && url && profileImage" [href]="profileImage" target="_blank">
+
+                    <img *ngIf="fileIsPdfOrNotForLicense && url"
+                    src='assets/images/pdf_image.png' alt="pdf"
+                    />
+                  </a>
+                    
+                    <div 
+                      class="hover-text mt-0 text-center d-block text-highlight"
+                    >
+                      <!-- <i class="bi bi-upload"></i> -->
+                       <label for="fileInput1">
+                         <img class="upload-icon"
+                           src="assets/images/upload_document.png"
+                           alt="upload"
+                         />
+                       </label>
+                      <p class="mb-0" *ngIf="!url">Click to Upload</p>
+                    </div>
+                  </label>
+                  <br />
+                  <input
+                    id="fileInput1"
+                    type="file"
+                    (change)="onSelectFile($event)"
+                    accept="image/png, image/jpeg, application/pdf"
+                  />
+                </div>
+
+                <div
+                *ngIf="submitted && !profileImage"
+                class="text-danger"
+              >
+              Restaurant License is required 
+              </div>
+              </div>
+
+              
+
+              <div class="col-md-6 mb-4 ">
+                <label class="auth-label">Shop ID Proof</label>
+                <div class="upload_image">
+                  <label class="hoverable hoverable1" >
+                    <img *ngIf=" url1 && !fileIsPdfOrNot"
+                      [src]="url1"
+                    />
+                    <a *ngIf="fileIsPdfOrNot && url1 && profileImage1" [href]="profileImage1" target="_blank">
+
+                      <img *ngIf="fileIsPdfOrNot && url1"
+                      src='assets/images/pdf_image.png' alt="pdf"
+                      />
+                    </a>
+                    <div
+                      class="hover-text mt-0 text-center d-block text-highlight"
+                    >
+                      <label for="fileInput2">
+                        <img class="upload-icon"
+                          src="assets/images/upload_document.png"
+                          alt="upload"
+                        />
+                      </label>
+
+                      <p class="mb-0" *ngIf="!url1">Click to Upload</p>
+                    </div>
+                  </label>
+                  <br />
+                  <input
+                    id="fileInput2"
+                    type="file"
+                    (change)="onSelectFile2($event)"
+                    accept="image/png, image/jpeg, application/pdf"
+                  />
+                
+                </div>
+                <div
+                *ngIf="submitted && !url1"
+                class="text-danger"
+              >
+              Restaurant ID Proof  is required               </div>
+              </div>
+             
+              <!-- <div class="col-md-6 ">
+                            <div class="custom-input mb-4 me-3">
+                                <mat-form-field appearance="outline"   class="w-100">
+                                    <input matInput placeholder="Restaurant License" />
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="custom-input mb-4 ms-3">
+
+                                <mat-form-field appearance="outline" class="w-100">
+                                    <input matInput placeholder="Upload Id Proof" />
+                                </mat-form-field>
+                            </div>
+                        </div> -->
+
+              <!-- <div class="col-md-12 col-lg-9 col-xl-8 ">
+                <div class="custom-input me-3 res-m-0 mb-4">
+                  <h5 class="work">Working Days</h5>
+
+                  <div class="custom-btn-toggle mt-3">
+                    <mat-button-toggle-group
+                      name="ingredients"
+                      aria-label="Ingredients"
+                      [value]="this.restaurantData.documents?.workingDays"
+                      multiple
+                      (change)="getWokingDay($event)"
+                    >
+                      <mat-button-toggle
+                        ngDefaultControl
+                        [value]="item.value"
+                        *ngFor="let item of workingDays"
+                        formControlName="workingDays"
+                        [checked]="item.checked"
+                        [style.background-color]="item.color"
+                        >{{ item?.showName }}
+                        </mat-button-toggle
+                      >
+                    </mat-button-toggle-group>
+
+                    <div
+                    *ngIf="commonFunctionForError('workingDays')"
+                    class="text-danger"
+                  >
+                  Please select working days!
+                  </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-12 col-lg-3 col-xl-4 ">
+               
+
+                <div class="checkbox primary-check ms-3 res-ms-0 mb-4">
+                  <h5 class="invisible inv-cls mb-1">Days</h5>
+                  <mat-checkbox
+                  class="example-margin primary-color mt-3"
+                  (click)="selectAll()"             
+                  aria-checked="true"
+                  [checked]="isSelectedAll()"
+              >Select All</mat-checkbox>
+                </div>
+              </div>
+
+              <div class=" col-md-6 col-lg-5 mb-4">
+                <label class="auth-label">Opening Time</label>
+                <div class="custom-search custom-input-time">
+                  <input readonly
+                    class="search form-control"
+                    [ngxTimepicker]="picker"
+                    type="text"
+                    placeholder="Choose Opening Time"
+                    formControlName="openingTime"
+                  />
+                  <ngx-material-timepicker
+                    #picker
+                    (timeSet)="handleTimeSet($event)"
+                  ></ngx-material-timepicker>
+                </div>
+                <div
+                *ngIf="commonFunctionForError('openingTime')"
+                class="text-danger"
+              >
+              Opening Time is required
+              </div>
+              </div>
+             
+
+              <div class="col-md-6 col-lg-5 mb-4">
+                <label class="auth-label">Closing Time</label>
+                <div class="custom-search custom-input-time">
+                  <input readonly
+                    class="search form-control"
+                    [ngxTimepicker]="picker1"
+                    type="text"
+                    placeholder="Choose Closing Time"
+                    formControlName="closingTime"
+                  />
+                  <ngx-material-timepicker
+                    #picker1
+                    (timeSet)="handleTimeSet1($event)"
+                  ></ngx-material-timepicker>
+                </div>
+                <div
+                *ngIf="commonFunctionForError('closingTime')"
+                class="text-danger"
+              >
+              Closing Time is required
+              </div>
+              </div> -->
+            </div>
+          </form>
+          <div class="auth-btn text-center mt-3 mb-2">
+            <button
+              mat-flat-button
+              class="w-50"
+              color="primary"
+              (click)="adddocumentResturants()"
+            >
+              Continue
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

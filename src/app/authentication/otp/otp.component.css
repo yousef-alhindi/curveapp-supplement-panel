@@ -1,0 +1,16 @@
+.log-top-txt h3 {
+    font-weight: 600!important;   
+}
+
+.sec{
+    text-align: center;
+}
+
+.sec span{
+    font-size: 14px;
+    color: #FFFFFF;
+}
+
+.small-primary{
+    cursor: pointer;
+}
